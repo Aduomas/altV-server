@@ -1,0 +1,18 @@
+[20:11:50] alt:V Server, build #704, branch beta
+[20:11:50] Starting alt:V Server on 0.0.0.0:7788
+[20:11:50] Starting resource chat
+[20:11:50] Started resource chat
+[20:11:50] Starting resource freeroam
+[20:11:50] Started resource freeroam
+[20:11:50] Starting resource voice-chat
+[20:11:50][Warning] `createVoiceChannel(...)` is deprecated consider using `new VoiceChannel(...)`
+[20:11:50][Warning] `createVoiceChannel(...)` is deprecated consider using `new VoiceChannel(...)`
+[20:11:50] Started resource voice-chat
+[20:11:50] Starting HTTP server
+[20:11:50] Server started
+[20:11:50] Started HTTP server on 0.0.0.0:7788
+[20:12:07] [chat:msg] Aduomas: a	
+[20:12:52] [chat:cmd] Aduomas: /pos	
+[20:12:55] [chat:msg] Aduomas: a	
+[20:12:57] [chat:cmd] Aduomas: /hlep	
+[20:20:03] [chat:cmd] Aduomas: /quit	
