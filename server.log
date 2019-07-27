@@ -1,9 +1,13 @@
-[01:53:18] alt:V Server, build #704, branch beta
-[01:53:18] Starting alt:V Server on 0.0.0.0:7788
-[01:53:18] Starting resource chat
-[01:53:18] Started resource chat
-[01:53:18] Starting resource myresource
-[01:53:18] Started resource myresource
-[01:53:18] Starting HTTP server
-[01:53:18] Server started
-[01:53:18] Started HTTP server on 0.0.0.0:7788
+[02:23:37] alt:V Server, build #704, branch beta
+[02:23:37] Starting alt:V Server on 0.0.0.0:7788
+[02:23:37] Starting resource chat
+[02:23:37] Started resource chat
+[02:23:37] Starting resource myresource
+[02:23:37] Starting resource server-extended
+[02:23:37] Started resource server-extended
+[02:23:37] Started resource myresource
+[02:23:37] Starting HTTP server
+[02:23:37] Server started
+[02:23:37] Started HTTP server on 0.0.0.0:7788
+[02:23:52] [chat:cmd] Aduomas: /giveweapon	
+[02:24:07] [chat:cmd] Aduomas: /giveweapon minigun 100	
