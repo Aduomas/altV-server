@@ -21,15 +21,15 @@ export function giveWeapon(player, arg) {
 	else weaponAmmo = 999;
 
 
-	// GIVE WEAPON
-	var id;
+	// GIVE WEAPON WITH ID
+	/*var id;
 	if(arg[2] != undefined) {
 		alt.players.forEach((p)=> {
 			if(p.id == parseInt(arg[2], 10))
 				id = arg[2];
 		});
 		console.log(`id: ${id}`);
-	}
+	}*/
 		
 
 	player.showNotification('CHAR_AMMUNATION', '/wep', `You've recieved ~y~${weaponName}~w~.`, '');
