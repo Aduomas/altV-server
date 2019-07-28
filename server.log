@@ -1,13 +1,14 @@
-[22:52:58] alt:V Server, build #704, branch beta
-[22:52:58] Starting alt:V Server on 0.0.0.0:7788
-[22:52:58] Starting resource chat
-[22:52:58] Started resource chat
-[22:52:58] Starting resource freeroam
-[22:52:58] Starting resource server-extended
-[22:52:58] Started resource server-extended
-[22:52:58] Started resource freeroam
-[22:52:58] Starting HTTP server
-[22:52:58] Server started
-[22:52:58] Started HTTP server on 0.0.0.0:7788
-[22:53:15] [chat:cmd] Aduomas: /car thrax	
-[22:53:16] [chat:cmd] Aduomas: /cardel	
+[00:57:33] alt:V Server, build #704, branch beta
+[00:57:33] Starting alt:V Server on 0.0.0.0:7788
+[00:57:33] Starting resource chat
+[00:57:33] Started resource chat
+[00:57:33] Starting resource freeroam
+[00:57:33] Starting resource server-extended
+[00:57:33] Started resource server-extended
+[00:57:33] Started resource freeroam
+[00:57:33] Starting HTTP server
+[00:57:33] Server started
+[00:57:33] Started HTTP server on 0.0.0.0:7788
+[01:00:16] [chat:cmd] Peurost: /internet https://google.com	
+[01:01:44] [chat:cmd] Peurost: /internet https://google.com	
+[01:01:52] [chat:cmd] Peurost: /internet https://google.com	

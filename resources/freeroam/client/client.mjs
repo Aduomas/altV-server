@@ -87,6 +87,35 @@ alt.on('update', () => {
 	});
 });
 
+// Internet Browser
+var currentInternetPage = undefined;
+
+alt.onServer('openInternetBrowser', function(url){
+	if (currentInternetPage !== undefined) {
+		currentInternetPage.destroy();
+	}
+	
+	currentInternetPage = new alt.WebView(url);
+	currentInternetPage.focus();
+	alt.showCursor(true);
+});
+
+alt.on('closebrowser', () =>{
+	currentInternetPage.destroy();
+	currentInternetPage = undefined;
+    alt.showCursor(false);
+});
+
+alt.on('keydown', (key) => {
+    if (key === 'M'.charCodeAt(0)) {
+		alt.on('keydown', (key) => {
+			if (key === 'N'.charCodeAt(0)) {
+				alt.emit('closebrowser');
+			}
+		});
+    }
+});
+
 // Interiors
 native.requestIpl('chop_props');
 native.requestIpl('FIBlobby');
