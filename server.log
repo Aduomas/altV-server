@@ -1,11 +1,13 @@
-[02:25:52] alt:V Server, build #704, branch beta
-[02:25:52] Starting alt:V Server on 0.0.0.0:7788
-[02:25:52] Starting resource chat
-[02:25:52] Started resource chat
-[02:25:52] Starting resource myresource
-[02:25:52] Starting resource server-extended
-[02:25:52] Started resource server-extended
-[02:25:52] Started resource myresource
-[02:25:52] Starting HTTP server
-[02:25:52] Server started
-[02:25:52] Started HTTP server on 0.0.0.0:7788
+[19:54:45] alt:V Server, build #704, branch beta
+[19:54:45] Starting alt:V Server on 0.0.0.0:7788
+[19:54:45] Starting resource chat
+[19:54:45] Started resource chat
+[19:54:45] Starting resource freeroam
+[19:54:45] Starting resource server-extended
+[19:54:45] Started resource server-extended
+[19:54:45] Started resource freeroam
+[19:54:45] Starting resource myresource
+[19:54:45] Started resource myresource
+[19:54:45] Starting HTTP server
+[19:54:45] Server started
+[19:54:45] Started HTTP server on 0.0.0.0:7788

@@ -1,6 +1,5 @@
 import * as alt from 'alt';
 import * as chat from 'chat';
-import { weaponList } from './weapons.mjs';
 import * as extended from 'server-extended';
 
 // SpawnPoint
