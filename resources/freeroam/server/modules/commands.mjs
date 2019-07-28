@@ -16,6 +16,10 @@ chat.registerCmd('veh', cmdFuncs.spawnVehicle);
 chat.registerCmd('vehicle', cmdFuncs.spawnVehicle);
 chat.registerCmd('car', cmdFuncs.spawnVehicle);
 
+// Vehicle delete
+chat.registerCmd('cardel', cmdFuncs.deleteVehicle);
+chat.registerCmd('vehdel', cmdFuncs.deleteVehicle);
+
 // Vehicle Colors
 chat.registerCmd('vehiclecolor1', cmdFuncs.setVehicleColor1);
 chat.registerCmd('vehiclecolor2', cmdFuncs.setVehicleColor2);

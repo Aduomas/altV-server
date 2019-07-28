@@ -4,6 +4,7 @@ import { weaponList } from './weapons.mjs';
 import { Dimension, CurrentDimensions } from './dimension.mjs';
 import * as utility from './utility.mjs';
 
+
 /**
  * Give a weapon to yourself.
  * @param player
@@ -78,6 +79,21 @@ export function spawnVehicle(player, arg) {
 	} catch(err) {
 		player.personalVehicle = undefined;
 		player.sendMessage('{FF0000}Vehicle type is not valid.');
+	}
+}
+
+/**
+ * Remove the vehicle player is in.
+ * @param player
+ */
+
+export function deleteVehicle(player) {
+	if (player.personalVehicle !== undefined) {
+		try {
+		player.personalVehicle.destroy();
+		} catch (err) {
+		player.personalVehicle = undefined;
+		}
 	}
 }
 
