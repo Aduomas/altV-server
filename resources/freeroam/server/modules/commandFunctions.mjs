@@ -20,10 +20,12 @@ export function giveWeapon(player, arg) {
 		weaponAmmo = parseInt(arg[1], 10);
 	else weaponAmmo = 999;
 
+
+	// GIVE WEAPON
 	var id;
 	if(arg[2] != undefined) {
-		alt.players.forEach((player)=> {
-			if(player.id == parseInt(arg[2], 10))
+		alt.players.forEach((p)=> {
+			if(p.id == parseInt(arg[2], 10))
 				id = arg[2];
 		});
 		console.log(`id: ${id}`);
