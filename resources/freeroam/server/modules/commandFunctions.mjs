@@ -19,6 +19,15 @@ export function giveWeapon(player, arg) {
 	if(arg[1] != undefined)
 		weaponAmmo = parseInt(arg[1], 10);
 	else weaponAmmo = 999;
+
+	var id;
+	if(arg[2] != undefined) {
+		alt.players.forEach((player)=> {
+			if(player.id == parseInt(arg[2], 10))
+				id = arg[2];
+		});
+		console.log(`id: ${id}`);
+	}
 		
 
 	player.showNotification('CHAR_AMMUNATION', '/wep', `You've recieved ~y~${weaponName}~w~.`, '');
