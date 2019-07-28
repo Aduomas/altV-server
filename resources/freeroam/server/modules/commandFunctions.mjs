@@ -15,8 +15,14 @@ export function giveWeapon(player, arg) {
 	if (!weaponList[weaponName])
 		return player.sendMessage('{FF0000}Weapon type is not valid.');
 
+	var weaponAmmo = 0;
+	if(arg[1] != undefined)
+		weaponAmmo = parseInt(arg[1], 10);
+	else weaponAmmo = 999;
+		
+
 	player.showNotification('CHAR_AMMUNATION', '/wep', `You've recieved ~y~${weaponName}~w~.`, '');
-	player.giveWeapon(weaponList[weaponName], 999, true);
+	player.giveWeapon(weaponList[weaponName], weaponAmmo, true);
 }
 
 /**
