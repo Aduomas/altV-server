@@ -14,6 +14,7 @@ chat.registerCmd('clearwep', cmdFuncs.clearWeapons);
 // Vehicle
 chat.registerCmd('veh', cmdFuncs.spawnVehicle);
 chat.registerCmd('vehicle', cmdFuncs.spawnVehicle);
+chat.registerCmd('car', cmdFuncs.spawnVehicle);
 
 // Vehicle Colors
 chat.registerCmd('vehiclecolor1', cmdFuncs.setVehicleColor1);

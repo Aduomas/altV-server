@@ -10,7 +10,10 @@ import * as utility from './utility.mjs';
  * @param arg
  */
 export function giveWeapon(player, arg) {
-	const weaponName = arg[0].toLowerCase();
+	let weaponName;
+	if(arg[0] != undefined)
+		weaponName = arg[0].toLowerCase();
+	else return player.sendMessage(`{FF0000} You didn't put any arguments.`);
     
 	if (!weaponList[weaponName])
 		return player.sendMessage('{FF0000}Weapon type is not valid.');
@@ -21,15 +24,18 @@ export function giveWeapon(player, arg) {
 	else weaponAmmo = 999;
 
 
-	// GIVE WEAPON WITH ID
-	/*var id;
 	if(arg[2] != undefined) {
-		alt.players.forEach((p)=> {
-			if(p.id == parseInt(arg[2], 10))
-				id = arg[2];
-		});
-		console.log(`id: ${id}`);
-	}*/
+		const target = alt.getPlayersByName(arg[2]);
+		if (!target || !target[0])
+			return player.sendMessage('{FF0000}Player does not exist.');
+
+		if (Array.isArray(target) && target.length >= 2)
+			return player.sendMessage('{FF0000}Too many players found; be more specific.');
+
+		if (target[0].dimension !== player.dimension)
+			return player.sendMessage('{FF0000}You are not in the same dimension.');
+		target[0].giveWeapon(weaponList[weaponName], weaponAmmo, true);
+	}
 		
 
 	player.showNotification('CHAR_AMMUNATION', '/wep', `You've recieved ~y~${weaponName}~w~.`, '');

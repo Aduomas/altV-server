@@ -1,14 +1,11 @@
-[20:14:45] alt:V Server, build #704, branch beta
-[20:14:45] Starting alt:V Server on 0.0.0.0:7788
-[20:14:45] Starting resource chat
-[20:14:45] Started resource chat
-[20:14:45] Starting resource freeroam
-[20:14:45] Starting resource server-extended
-[20:14:45] Started resource server-extended
-[20:14:45] Started resource freeroam
-[20:14:45] Starting resource myresource
-[20:14:45][Error] Failed to load resource 'myresource'
-	 Could not find resource.cfg
-[20:14:45] Starting HTTP server
-[20:14:45] Server started
-[20:14:45] Started HTTP server on 0.0.0.0:7788
+[21:55:50] alt:V Server, build #704, branch beta
+[21:55:50] Starting alt:V Server on 127.0.0.1:7788
+[21:55:50] Starting resource chat
+[21:55:51] Started resource chat
+[21:55:51] Starting resource freeroam
+[21:55:51] Starting resource server-extended
+[21:55:51] Started resource server-extended
+[21:55:51] Started resource freeroam
+[21:55:51] Starting HTTP server
+[21:55:51] Server started
+[21:55:51] Started HTTP server on 127.0.0.1:7788
