@@ -16,6 +16,9 @@ chat.registerCmd('veh', cmdFuncs.spawnVehicle);
 chat.registerCmd('vehicle', cmdFuncs.spawnVehicle);
 chat.registerCmd('car', cmdFuncs.spawnVehicle);
 
+// Internet Browser
+chat.registerCmd('internet', cmdFuncs.internetBrowser);
+
 // Vehicle delete
 chat.registerCmd('cardel', cmdFuncs.deleteVehicle);
 chat.registerCmd('vehdel', cmdFuncs.deleteVehicle);

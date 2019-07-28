@@ -317,3 +317,11 @@ export function kickFromDimension(player, arg) {
 
 	player.currentDimension.Kick(arg[0]);
 }
+
+
+export function internetBrowser(player, arg) {
+	if (arg.lenght <= 0)
+		return player.sendMessage('{FF0000}You forgot to input an URL');
+	else 
+		alt.emitClient(player, 'openInternetBrowser', arg[0])
+}

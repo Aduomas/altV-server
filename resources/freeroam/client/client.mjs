@@ -100,15 +100,34 @@ alt.on('keydown', (key) => {
     }
 });
 
-function Speedometer()
-{
-	var ped = native.getPlayerPed(-1);
+// Internet Browser
+var currentInternetPage = undefined;
 
-	if(native.isPedInAnyVehicle(ped)) 
-		extended.drawText(`Speed: ${Math.round(native.getEntitySpeed(native.getPlayerPed(-1))*3.6)}`, 0.5, 0.5, 0.5, 4, 255, 255, 255, 255, false, false);
+alt.onServer('openInternetBrowser', function(url){
+	if (currentInternetPage !== undefined) {
+		currentInternetPage.destroy();
+	}
+	
+	currentInternetPage = new alt.WebView(url);
+	currentInternetPage.focus();
+	alt.showCursor(true);
+});
 
-}
+alt.on('closebrowser', () =>{
+	currentInternetPage.destroy();
+	currentInternetPage = undefined;
+    alt.showCursor(false);
+});
 
+alt.on('keydown', (key) => {
+    if (key === 'M'.charCodeAt(0)) {
+		alt.on('keydown', (key) => {
+			if (key === 'N'.charCodeAt(0)) {
+				alt.emit('closebrowser');
+			}
+		});
+    }
+});
 
 // Interiors
 native.requestIpl('chop_props');
