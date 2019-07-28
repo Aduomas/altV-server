@@ -34,7 +34,7 @@ function SpawnPlayer(player) {
 
 
 // COMMANDS
-chat.registerCmd('giveweapon', (player, args) => {
+/*chat.registerCmd('giveweapon', (player, args) => {
     if(args.length <= 0) {
         chat.send(player, '{FF0000}/giveweapon [weapon_name] [ammoAmmount] [id]'); // NEED IDS IN ARGUMENTS (NOT DONE)
         return;
@@ -51,8 +51,11 @@ chat.registerCmd('giveweapon', (player, args) => {
         ammoAmount = parseInt(args[1], 10);
     else ammoAmount = 9999;
 
-    
+    var id = 0;
+    if(args[2] != undefined)
+        id = parseInt(args[2], 10);
+    else id = alt.Player.all;;
 
     player.giveWeapon(weaponList[weaponName], ammoAmount, true);
     chat.send(player, `You were given ${weaponName} with ${ammoAmount} amount of ammo.`);
-});
+});*/
