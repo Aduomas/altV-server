@@ -19,6 +19,9 @@ chat.registerCmd('car', cmdFuncs.spawnVehicle);
 // Vehicle delete
 chat.registerCmd('cardel', cmdFuncs.deleteVehicle);
 chat.registerCmd('vehdel', cmdFuncs.deleteVehicle);
+chat.registerCmd('dv', cmdFuncs.deleteVehicle);
+
+// Max Vehicle
 
 // Vehicle Colors
 chat.registerCmd('vehiclecolor1', cmdFuncs.setVehicleColor1);

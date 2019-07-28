@@ -45,6 +45,8 @@ alt.onServer('suicidePlayer', (player) => {
 	}, 1250);
 });
 
+var idk = false;
+
 alt.on('update', () => {
 	alt.Player.all.forEach((player) => {
 		// Don't draw local player.
@@ -84,8 +86,29 @@ alt.on('update', () => {
 		// Scaling Math
 		extended.drawText(player.name, result[1], y, scale, 4, 255, 255, 255, 255, true, false);
 		native.drawRect(result[1], y + 0.05, pHealth, 0.01, 255, 0, 0, 100);
+		
 	});
+	
+	// Draw Speedometer
+	Speedometer();
 });
+
+alt.on('keydown', (key) => {
+    if (key == 'Z'.charCodeAt(0)) {
+		idk = !idk;
+		alt.log(`${idk.toString()}`);
+    }
+});
+
+function Speedometer()
+{
+	var ped = native.getPlayerPed(-1);
+
+	if(native.isPedInAnyVehicle(ped)) 
+		extended.drawText(`Speed: ${Math.round(native.getEntitySpeed(native.getPlayerPed(-1))*3.6)}`, 0.5, 0.5, 0.5, 4, 255, 255, 255, 255, false, false);
+
+}
+
 
 // Interiors
 native.requestIpl('chop_props');

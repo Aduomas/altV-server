@@ -20,12 +20,12 @@ export function giveWeapon(player, arg) {
 		return player.sendMessage('{FF0000}Weapon type is not valid.');
 
 	var weaponAmmo = 0;
-	if(arg[1] != undefined)
+	if(arg[1] !== undefined)
 		weaponAmmo = parseInt(arg[1], 10);
 	else weaponAmmo = 999;
 
 
-	if(arg[2] != undefined) {
+	if(arg[2] !== undefined) {
 		const target = alt.getPlayersByName(arg[2]);
 		if (!target || !target[0])
 			return player.sendMessage('{FF0000}Player does not exist.');
@@ -88,14 +88,15 @@ export function spawnVehicle(player, arg) {
  */
 
 export function deleteVehicle(player) {
-	if (player.personalVehicle !== undefined) {
+	if (player.vehicle !== undefined) {
 		try {
-		player.personalVehicle.destroy();
+		player.vehicle.destroy();
 		} catch (err) {
-		player.personalVehicle = undefined;
+		player.vehicle = undefined;
 		}
 	}
 }
+
 
 /**
  * Set the customPrimary Color for a vehicle.
