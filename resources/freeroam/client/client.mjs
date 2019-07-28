@@ -98,7 +98,7 @@ function Speedometer()
 	var ped = native.getPlayerPed(-1);
 
 	if(native.isPedInAnyVehicle(ped)) 
-		extended.drawText(`Speed: ${Math.round(native.getEntitySpeed(native.getPlayerPed(-1))*3.6)}`, 0.5, 0.5, 0.5, 4, 255, 255, 255, 255, false, false);
+		extended.drawText(`Speed: ${Math.round(native.getEntitySpeed(native.getPlayerPed(-1))*3.6)}`, 0.95, 0.85, 0.5, 4, Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), 255, false, false);
 }
 
 // Internet Browser
@@ -121,7 +121,7 @@ alt.on('closebrowser', () =>{
 });
 
 alt.on('keydown', (key) => {
-    if (key === 'M'.charCodeAt(0)) {
+    if (key === 'M'.charCodeAt(0) && currentInternetPage !== undefined) {
 		alt.on('keydown', (key) => {
 			if (key === 'N'.charCodeAt(0)) {
 				alt.emit('closebrowser');
