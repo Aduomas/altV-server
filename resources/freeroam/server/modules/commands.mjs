@@ -1,6 +1,7 @@
 import * as chat from 'chat'; //https://github.com/team-stuyk-alt-v/altV-Chat-Extended
 import * as cmdFuncs from './commandFunctions.mjs';
 
+
 // Give weapon
 chat.registerCmd('giveweapon', cmdFuncs.giveWeapon);
 chat.registerCmd('weapon', cmdFuncs.giveWeapon);
@@ -15,6 +16,10 @@ chat.registerCmd('clearwep', cmdFuncs.clearWeapons);
 chat.registerCmd('veh', cmdFuncs.spawnVehicle);
 chat.registerCmd('vehicle', cmdFuncs.spawnVehicle);
 chat.registerCmd('car', cmdFuncs.spawnVehicle);
+
+// Vehicle License Plate
+chat.registerCmd('plate', cmdFuncs.changeLicensePlate)
+chat.registerCmd('generateplate', cmdFuncs.generateLicensePlate)
 
 // Internet Browser
 chat.registerCmd('internet', cmdFuncs.internetBrowser);

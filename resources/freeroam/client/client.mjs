@@ -93,14 +93,41 @@ alt.on('update', () => {
 	Speedometer();
 });
 
+alt.onServer('changeLicensePlate', function(licenseplate){
+	changeLicensePlate(licenseplate)
+});
+
+function changeLicensePlate(licenseplate){
+	native.setVehicleNumberPlateText(native.getVehiclePedIsIn(native.getPlayerPed(-1), false), licenseplate)
+};
+
+function randomString(len, charSet) {
+    charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var randomString = '';
+    for (var i = 0; i < len; i++) {
+        var randomPoz = Math.floor(Math.random() * charSet.length);
+        randomString += charSet.substring(randomPoz,randomPoz+1);
+    }
+    return randomString;
+}
+// ${randomString(3, `ABCDEFGHIJKLMNOPQRSTUVWXYZ`)}-${randomString(3, `0123456789`)}
+alt.onServer('generateLicensePlate', () =>{
+	const generatedPlate = `${randomString(3, `ABCDEFGHIJKLMNOPQRSTUVWXYZ`)}-${randomString(3, `0123456789`)}`;
+	changeLicensePlate(generatedPlate)
+});
+
+
 function Speedometer()
 {
 	var ped = native.getPlayerPed(-1);
-
+	var carHealth = (native.getVehicleBodyHealth(native.getVehiclePedIsIn(native.getPlayerPed(-1), false)) + native.getVehicleEngineHealth(native.getVehiclePedIsIn(native.getPlayerPed(-1), false))) / 2;
 	if(native.isPedInAnyVehicle(ped)) {
-		extended.drawText(`Speed: ${Math.round(native.getEntitySpeed(native.getPlayerPed(-1))*3.6)}`, 0.95, 0.85, 0.5, 4, Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), 255, false, false);
-		native.drawRect(0.499, 0.899, 0.22, 0.18, 255, 255, 255, 255);
-		native.drawRect(0.5, 0.9, 0.2, 0.16, 0, 0, 0, 255);
+		extended.drawText(`Speed: ${Math.round(native.getEntitySpeed(native.getPlayerPed(-1))*3.6)}`, 0.5, 0.92, 0.5, 4, Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), 255, false, false);
+		extended.drawText(native.getLabelText(native.getDisplayNameFromVehicleModel(native.getEntityModel(native.getVehiclePedIsIn(native.getPlayerPed(-1), false)))), 0.50, 0.84, 0.5, 4, 255, 255, 255, 255, false, false);
+		extended.drawText(`Numeriai: ${native.getVehicleNumberPlateText(native.getVehiclePedIsIn(native.getPlayerPed(-1), false))}`, 0.48, 0.87, 0.5, 4, 255, 255, 255, 255, false, false);
+		extended.drawText(`G: ${Math.round(carHealth)}`, 0.54, 0.87, 0.5, 4, 255, 255, 255, 255, false, false);
+		native.drawRect(0.5, 0.9, 0.165, 0.125, 209, 164, 0, 200);
+		native.drawRect(0.5, 0.9, 0.16, 0.12, 0, 0, 0, 200);
 	}
 }
 // Internet Browser

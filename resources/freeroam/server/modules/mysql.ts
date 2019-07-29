@@ -2,10 +2,10 @@ import mysql from 'mysql';
 
 const config = {
     connectionLimit: 50,
-    host: '',
-    user: '',
-    password: '',
-    database: ''
+    host: '91.211.245.190',
+    user: 'solar',
+    password: 'Solar9632',
+    database: 'altv'
 }
 let pool: mysql.Pool;
 

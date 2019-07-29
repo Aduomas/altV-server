@@ -57,6 +57,7 @@ export function clearWeapons(player) {
  * @param player
  * @param arg
  */
+
 export function spawnVehicle(player, arg) {
 	if (!arg[0])
 		return player.sendMessage('{FF0000}Vehicle type is not valid.');
@@ -75,6 +76,7 @@ export function spawnVehicle(player, arg) {
 		player.personalVehicle = new alt.Vehicle(arg[0], positionNear.x, positionNear.y, positionNear.z, 0, 0, 0);
 		player.personalVehicle.dimension = player.dimension;
 		alt.emitClient(player, 'warpIntoVehicle', player.personalVehicle);
+		generateLicensePlate(player)
 		player.showSubtitle('~g~You have spawned a vehicle.', 3000);
 	} catch(err) {
 		player.personalVehicle = undefined;
@@ -325,3 +327,11 @@ export function internetBrowser(player, arg) {
 	else 
 		alt.emitClient(player, 'openInternetBrowser', arg[0])
 }
+
+export function changeLicensePlate(player, arg) {
+	alt.emitClient(player, 'changeLicensePlate', arg[0])
+};
+
+export function generateLicensePlate(player) {
+	alt.emitClient(player, 'generateLicensePlate')
+};
