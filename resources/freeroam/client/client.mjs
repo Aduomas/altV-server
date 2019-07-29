@@ -97,10 +97,12 @@ function Speedometer()
 {
 	var ped = native.getPlayerPed(-1);
 
-	if(native.isPedInAnyVehicle(ped)) 
+	if(native.isPedInAnyVehicle(ped)) {
 		extended.drawText(`Speed: ${Math.round(native.getEntitySpeed(native.getPlayerPed(-1))*3.6)}`, 0.95, 0.85, 0.5, 4, Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), 255, false, false);
+		native.drawRect(0.499, 0.899, 0.22, 0.18, 255, 255, 255, 255);
+		native.drawRect(0.5, 0.9, 0.2, 0.16, 0, 0, 0, 255);
+	}
 }
-
 // Internet Browser
 var currentInternetPage = undefined;
 
