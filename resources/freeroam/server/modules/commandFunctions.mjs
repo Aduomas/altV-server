@@ -76,7 +76,7 @@ export function spawnVehicle(player, arg) {
 		player.personalVehicle = new alt.Vehicle(arg[0], positionNear.x, positionNear.y, positionNear.z, 0, 0, 0);
 		player.personalVehicle.dimension = player.dimension;
 		alt.emitClient(player, 'warpIntoVehicle', player.personalVehicle);
-		generateLicensePlate(player)
+		generateLicensePlate(player);
 		player.showSubtitle('~g~You have spawned a vehicle.', 3000);
 	} catch(err) {
 		player.personalVehicle = undefined;
