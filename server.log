@@ -1,0 +1,17 @@
+[14:21:17] alt:V Server, build #737, branch beta
+[14:21:17] Starting alt:V Dev on 0.0.0.0:7788
+[14:21:17] Starting resource orp
+[14:21:17] Starting resource chat
+[14:21:17] Started resource chat
+[14:21:18] Started resource orp
+[14:21:18] Starting HTTP server
+[14:21:18][14:21:18][14:21:18] Started HTTP server on 0.0.0.0:7788
+ Server started
+[14:26:35] Peurost has connected.	
+[14:28:05] Peurost is attempting a registration with Peurost.	
+[14:28:13] Peurost is attempting a login with Peurost.	
+[14:28:16] Peurost has logged in.	
+[14:28:17] Peurost has spawned.	
+[14:28:35] Peurost was teleported to their last location.	
+[14:49:19] [chat:cmd] Peurost: /veh	
+[14:49:20] [chat:cmd] Peurost: /error	
