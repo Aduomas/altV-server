@@ -39,6 +39,21 @@ chat.registerCmd('register',(player, password) => {
     });
 });
 
+alt.on('spawnPlayer', (player, x, y, z, timeout) => {
+    player.spawn(x, y, z, timeout);
+});
+
+alt.on('destroyVehicle', player => { 
+    if (!player.destroyVehicle) return;
+    const index = player.vehicles.findIndex(
+        veh => parseInt(veh.data.id) === player.destroyVehicle);
+});
+
+chat.registerCmd('vehdel', player => {
+    alt.emit('destroyVehicle', player);
+});
+
+
 chat.registerCmd('login',(player, password) => {
     if(password.length > 1){
         chat.send(player, '/login [slaptažodis]');
@@ -48,7 +63,7 @@ chat.registerCmd('login',(player, password) => {
                 console.log(`${player.name} has logged in.`); //Įvykdomi veiksmai jeigu callback paduoda TRUE parametrą.
                 chat.send(player, 'Sveikas sugrįžęs');
                 player.model = 'mp_m_freemode_01';
-                alt.emit((player) ,'spawnPlayer', (813, -279, 66, 1000));
+                alt.emit('spawnPlayer', player, 813, -279, 66, 1000);
                 alt.emitClient(player, 'loginCamera', true);
             } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
                 chat.send(player, 'Blogas slaptažodis')
@@ -57,6 +72,5 @@ chat.registerCmd('login',(player, password) => {
     }
 });
 
-alt.on('spawnPlayer', (player, x, y, z, timeout) => {
-    player.spawn(x, y, z, timeout);
-});
+
+
