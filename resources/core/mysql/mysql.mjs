@@ -30,7 +30,7 @@ export function loginUser(username, password, callback){ //Naudojama prisijungim
         if(results[i].USER == username && results[i].PASSWORD == password){
           return callback(true); //Returnina TRUE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
         } else {
-          return callback(false); //Returnina FALSE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
+          callback(false); //Returnina FALSE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
         }
       }
     });
