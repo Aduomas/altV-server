@@ -29,10 +29,8 @@ export function loginUser(username, password, callback){ //Naudojama prisijungim
       for(let i = 0; i < results.length; i++){
         if(results[i].USER == username && results[i].PASSWORD == password){
           return callback(true); //Returnina TRUE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
-        } else {
-          callback(false); //Returnina FALSE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
-        }
       }
+      return callback(false);
     });
     connection.release();
   });
