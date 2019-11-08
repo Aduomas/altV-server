@@ -1,9 +1,9 @@
-[19:39:58] alt:V Server, build #818, branch beta
-[19:39:58] Starting alt:V Server on 0.0.0.0:7788
-[19:39:58] Loading resource core
-[19:39:58] Loading resource chat
-[19:39:58] Loaded resource chat
-[19:39:58] Loaded resource core
-[19:39:58] Starting HTTP server on 0.0.0.0:7788
-[19:39:58] Server started
-[19:40:52] [chat:cmd] Peurost: /login test	
+[21:47:18] alt:V Server, build #818, branch beta
+[21:47:18] Starting alt:V Server on 0.0.0.0:7788
+[21:47:18] Loading resource core
+[21:47:18] Loading resource chat
+[21:47:18] Loaded resource chat
+[21:47:19] Loaded resource core
+[21:47:19] Starting HTTP server on 0.0.0.0:7788
+[21:47:19] Server started
+[21:47:39] [chat:cmd] Peurost: /login test	

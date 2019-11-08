@@ -81,12 +81,6 @@ alt.on('keyup', (key) => {
 		alt.toggleGameControls(true);
 	}
 
-	if (key == 0x76) {
-		hidden = !hidden;
-		game.displayHud(!hidden);
-		game.displayRadar(!hidden);
-		view.emit('hideChat', hidden);
-	}
 });
 
 export default { pushMessage, pushLine, isChatHidden, isChatOpen };
