@@ -34,6 +34,7 @@ chat.registerCmd('register',(player, password) => {
             registerUser(player.name, password[0]);
             player.model = 'mp_m_freemode_01';
             player.spawn(813, -279, 69, 1000);
+            alt.emitClient(player, 'loginCamera', true);
         }
     });
 });
