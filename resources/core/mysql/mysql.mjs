@@ -46,7 +46,6 @@ export function isUserRegistered(username, callback){ //Naudojama ar žaidėjas 
           if(JSON.stringify(results).includes(username)){
             return callback(true); //Returnina TRUE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
           } else {
-            connection.release();
             if(error) throw error;
             return callback(false); //Returnina FALSE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
           }
