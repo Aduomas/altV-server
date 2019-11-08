@@ -5,6 +5,8 @@ import { pool, registerUser, isUserRegistered, loginUser } from '../mysql/mysql'
 
 alt.on('playerConnect', (player) => {
     isUserRegistered(player.name, function(result){
+    alt.emitClient(player, 'loginCamera');
+    player.spawn(740.085693359375, -310.8219909667969, 59.879150390625, 500);
     if(result){
         console.log(`${player.name} has connected.`);
         chat.send(player, 'Prisijunk naudodamas /login [slaptažodis]');
@@ -12,6 +14,15 @@ alt.on('playerConnect', (player) => {
         chat.send(player, 'Užsiregistruok naudodamas /register [slaptažodis]');
     }
     });
+});
+
+chat.registerCmd('car', (player, args) =>{
+    let veh = new alt.Vehicle(args[0], player.pos.x + 2, player.pos.y + 2, player.pos.z, 0, 0, 0);
+});
+
+chat.registerCmd('pos', (player) => {
+    chat.send(player, `X: ${player.pos.x} Y: ${player.pos.y} Z: ${player.pos.z}`);
+    console.log(`X: ${player.pos.x} Y: ${player.pos.y} Z: ${player.pos.z}`)
 });
 
 chat.registerCmd('register',(player, password) => {
@@ -37,6 +48,7 @@ chat.registerCmd('login',(player, password) => {
                 chat.send(player, 'Sveikas sugrįžęs');
                 player.model = 'mp_m_freemode_01';
                 player.spawn(813, -279, 66, 1000);
+                alt.emitClient(player, 'loginCamera', true);
             } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
                 chat.send(player, 'Blogas slaptažodis')
             }
