@@ -27,10 +27,10 @@ export function loginUser(username, password, callback){ //Naudojama prisijungim
     connection.query(`SELECT USER, PASSWORD FROM accounts`, function (error, results, fields) {
       if (error) throw error;
       for(let i = 0; i < results.length; i++){
-        if(results[i].USER == username && results[i].PASSWORD == password){
+        if(results[i].USER == username && results[i].PASSWORD == password)
           return callback(true); //Returnina TRUE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
       }
-      return callback(false);
+      callback(false);
     });
     connection.release();
   });
