@@ -6,3 +6,6 @@
 [21:58:53] Loaded resource core
 [21:58:53] Starting HTTP server on 0.0.0.0:7788
 [21:58:53] Server started
+[22:01:39] [chat:cmd] Peurost: /login test	
+[22:01:44] [chat:cmd] Peurost: /car t20	
+[22:15:02] [chat:cmd] Peurost: /car hydra	

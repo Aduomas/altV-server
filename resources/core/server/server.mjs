@@ -48,11 +48,15 @@ chat.registerCmd('login',(player, password) => {
                 console.log(`${player.name} has logged in.`); //Įvykdomi veiksmai jeigu callback paduoda TRUE parametrą.
                 chat.send(player, 'Sveikas sugrįžęs');
                 player.model = 'mp_m_freemode_01';
-                player.spawn(813, -279, 66, 1000);
+                alt.emit((player) ,'spawnPlayer', (813, -279, 66, 1000));
                 alt.emitClient(player, 'loginCamera', true);
             } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
                 chat.send(player, 'Blogas slaptažodis')
             }
         });
     }
+});
+
+alt.on('spawnPlayer', (player, x, y, z, timeout) => {
+    player.spawn(x, y, z, timeout);
 });
