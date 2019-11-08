@@ -17,6 +17,7 @@ export function registerUser(username, password){ //Naudojama užregistruoti var
     connection.query(`INSERT INTO accounts (USER, PASSWORD) VALUES ('${username}', '${password}')`, function (error, results, fields) {
       if (error) throw error;
     });
+    connection.release();
   });
 }
 
@@ -33,6 +34,7 @@ export function loginUser(username, password, callback){ //Naudojama prisijungim
         }
       }
     });
+    connection.release();
   });
 }
 
@@ -49,6 +51,7 @@ export function isUserRegistered(username, callback){ //Naudojama ar žaidėjas 
             return callback(false); //Returnina FALSE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
           }
         });
+        connection.release();
       });
 }
 
