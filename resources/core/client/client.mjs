@@ -18,22 +18,40 @@ alt.onServer('loginCamera', (args) => {
     }
 });
 
-var loginPage = new alt.WebView("http:/resource/client/html/login/login.html");
+const registerPage = new alt.WebView("http:/resource/client/html/login/register.html");
+const loginPage = new alt.WebView("http:/resource/client/html/login/login.html");
 
 alt.onServer('loginPageLoad', (args) => {
     loginPage.focus();
     if(args){
         alt.showCursor(true);
         native.transitionToBlurred(10);
-        //native.transitionFromBlurred(10);
     } else if (!args){
         alt.showCursor(false);
         loginPage.destroy();
+        registerPage.destroy();
+        native.transitionFromBlurred(100);
     }
 });
 
-loginPage.on('loginPlayer', (arg) =>{
-    console.log(arg);
-    alt.emitServer('loginPlayer', arg);
+loginPage.on('loginPlayerWeb', (arg) =>{
+    alt.emitServer('loginPlayerFromWeb', arg);
+});
+
+alt.onServer('registerPageLoad', (args) => {
+    registerPage.focus();
+    if(args){
+        alt.showCursor(true);
+        native.transitionToBlurred(10);
+    } else if (!args){
+        alt.showCursor(false);
+        registerPage.destroy();
+        loginPage.destroy();
+        native.transitionFromBlurred(100);
+    }
+});
+
+registerPage.on('registerPlayerWeb', (arg) =>{
+    alt.emitServer('registerPlayerFromWeb', arg);
 });
 

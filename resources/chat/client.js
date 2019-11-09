@@ -92,6 +92,11 @@ alt.on('keyup', (key) => {
 alt.onServer('hidechat', ()=> {
 	hidden = !hidden;
 	view.emit('hideChat', hidden);
+	view.emit('closeChat');
+	alt.emit('chatClosed');
+	alt.toggleGameControls(true);
+	opened = false;
 });
+
 
 export default { pushMessage, pushLine, isChatHidden, isChatOpen };

@@ -11,9 +11,9 @@ alt.on('playerConnect', (player) => {
         console.log(`${player.name} has connected.`);
         alt.emitClient(player, 'loginPageLoad', true);
         alt.emitClient(player, 'hidechat');
-        chat.send(player, 'Prisijunk naudodamas /login [slaptažodis]');
     } else if (!result){
-        chat.send(player, 'Užsiregistruok naudodamas /register [slaptažodis]');
+        alt.emitClient(player, 'registerPageLoad', true);
+        alt.emitClient(player, 'hidechat');
     }
     });
 });
@@ -42,37 +42,49 @@ chat.registerCmd('vehdel', player => {
 });
 
 
-alt.onClient('loginPlayer', (password, player) =>{
-    if(password.length > 1){
+function loginPlayer(player, password){
+    if(password.length < 1){
         chat.send(player, 'Neįvedei slaptažodžio');
     } else {
         loginUser(player.name, password, function(result){ //result kintamasis gaunamas iš callback loginUser funkcijoje.
             if(result){ //Gaunamas rezultatas iš callback'o loginUser funkcijoje.
                 console.log(`${player.name} has logged in.`); //Įvykdomi veiksmai jeigu callback paduoda TRUE parametrą.
                 chat.send(player, 'Sveikas sugrįžęs');
+                alt.emit('spawnPlayer', player, 813, -279, 66, 10);
                 player.model = 'mp_m_freemode_01';
-                alt.emit('spawnPlayer', player, 813, -279, 66, 1000);
                 alt.emitClient(player, 'loginCamera', true);
+                alt.emitClient(player, 'loginPageLoad', false);
                 alt.emitClient(player, 'hidechat');
             } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
                 chat.send(player, 'Blogas slaptažodis')
             }
         });
     }
+}
+alt.onClient('loginPlayerFromWeb', (player, arg) =>{
+    loginPlayer(player, arg);
 });
 
-alt.on('registerPlayer', (password, player) =>{
+function registerPlayer(player, password){
     isUserRegistered(player.name, function(result){
         if(result){
             chat.send(player, 'Jau esi užsiregistravęs!');
         } else if (!result){
             console.log(`${player.name} has registered.`);
-            registerUser(player.name, password[0]);
+            registerUser(player.name, password);
+            player.spawn(813, -279, 69, 10);
             player.model = 'mp_m_freemode_01';
-            player.spawn(813, -279, 69, 1000);
+            chat.send(player, 'Sveikas atvykęs');
             alt.emitClient(player, 'loginCamera', true);
+            alt.emitClient(player, 'registerPageLoad', false);
+            alt.emitClient(player, 'hidechat');
         }
     });
+}
+
+
+alt.onClient('registerPlayerFromWeb', (player, arg) =>{
+    registerPlayer(player, arg);
 });
 
 
