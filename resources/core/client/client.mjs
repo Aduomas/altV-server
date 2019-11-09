@@ -26,10 +26,12 @@ alt.onServer('loginPageLoad', (args) => {
     if(args){
         alt.showCursor(true);
         native.transitionToBlurred(10);
+        alt.emit('hidechat');
     } else if (!args){
         alt.showCursor(false);
         loginPage.destroy();
         registerPage.destroy();
+        alt.emit('hidechat');
         native.transitionFromBlurred(100);
     }
 });
@@ -43,11 +45,13 @@ alt.onServer('registerPageLoad', (args) => {
     if(args){
         alt.showCursor(true);
         native.transitionToBlurred(10);
+        alt.emit('hidechat');
     } else if (!args){
         alt.showCursor(false);
         registerPage.destroy();
         loginPage.destroy();
         native.transitionFromBlurred(100);
+        alt.emit('hidechat');
     }
 });
 

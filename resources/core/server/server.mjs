@@ -10,10 +10,8 @@ alt.on('playerConnect', (player) => {
     if(result){
         console.log(`${player.name} has connected.`);
         alt.emitClient(player, 'loginPageLoad', true);
-        alt.emitClient(player, 'hidechat');
     } else if (!result){
         alt.emitClient(player, 'registerPageLoad', true);
-        alt.emitClient(player, 'hidechat');
     }
     });
 });
@@ -54,7 +52,6 @@ function loginPlayer(player, password){
                 player.model = 'mp_m_freemode_01';
                 alt.emitClient(player, 'loginCamera', true);
                 alt.emitClient(player, 'loginPageLoad', false);
-                alt.emitClient(player, 'hidechat');
             } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
                 chat.send(player, 'Blogas slaptažodis')
             }
@@ -72,12 +69,11 @@ function registerPlayer(player, password){
         } else if (!result){
             console.log(`${player.name} has registered.`);
             registerUser(player.name, password);
-            player.spawn(813, -279, 69, 10);
+            player.spawn(813, -279, 66, 10);
             player.model = 'mp_m_freemode_01';
             chat.send(player, 'Sveikas atvykęs');
             alt.emitClient(player, 'loginCamera', true);
             alt.emitClient(player, 'registerPageLoad', false);
-            alt.emitClient(player, 'hidechat');
         }
     });
 }

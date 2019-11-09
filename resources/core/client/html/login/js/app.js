@@ -1,7 +1,6 @@
 function loginPlayer(){
     if('alt' in window){
     let password = document.getElementsByName('password')[0].value;
-    console.log(password);
     alt.emit('loginPlayerWeb', `${password}`);
     }
 };
@@ -9,7 +8,6 @@ function loginPlayer(){
 function registerPlayer(){
     if('alt' in window){
     let password = document.getElementsByName('password')[0].value;
-    console.log(password);
     alt.emit('registerPlayerWeb', `${password}`);
     }
 };

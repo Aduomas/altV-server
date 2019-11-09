@@ -89,7 +89,7 @@ alt.on('keyup', (key) => {
 	}
 });
 
-alt.onServer('hidechat', ()=> {
+alt.on('hidechat', ()=> {
 	hidden = !hidden;
 	view.emit('hideChat', hidden);
 	view.emit('closeChat');
