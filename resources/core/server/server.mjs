@@ -47,13 +47,13 @@ function loginPlayer(player, password){
         loginUser(player.name, password, function(result){ //result kintamasis gaunamas iš callback loginUser funkcijoje.
             if(result){ //Gaunamas rezultatas iš callback'o loginUser funkcijoje.
                 console.log(`${player.name} has logged in.`); //Įvykdomi veiksmai jeigu callback paduoda TRUE parametrą.
-                chat.send(player, 'Sveikas sugrįžęs');
                 alt.emit('spawnPlayer', player, 813, -279, 66, 10);
                 player.model = 'mp_m_freemode_01';
                 alt.emitClient(player, 'loginCamera', true);
                 alt.emitClient(player, 'loginPageLoad', false);
+                alt.emitClient(player, 'showAlert', ("Sveikas sugrįžęs", "green", 300));
             } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
-                chat.send(player, 'Blogas slaptažodis')
+                alt.emitClient(player, 'showAlert', ("Blogas Slaptažodis", "red", 300));
             }
         });
     }
@@ -65,13 +65,13 @@ alt.onClient('loginPlayerFromWeb', (player, arg) =>{
 function registerPlayer(player, password){
     isUserRegistered(player.name, function(result){
         if(result){
-            chat.send(player, 'Jau esi užsiregistravęs!');
+            alt.emitClient(player, 'showAlert', ("Jau esi užsiregistravęs", "red", 300));
         } else if (!result){
             console.log(`${player.name} has registered.`);
             registerUser(player.name, password);
             player.spawn(813, -279, 66, 10);
             player.model = 'mp_m_freemode_01';
-            chat.send(player, 'Sveikas atvykęs');
+            alt.emitClient(player, 'showAlert', ("Sveikas atvykęs", "green", 300));
             alt.emitClient(player, 'loginCamera', true);
             alt.emitClient(player, 'registerPageLoad', false);
         }
