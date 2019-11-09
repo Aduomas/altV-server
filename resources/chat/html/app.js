@@ -191,7 +191,6 @@ function highlightChat() {
 }
 
 function hideChat(state) {
-	console.log('hideChat called');
 	document.querySelector('.content').style.display = state ? 'none' : 'block';
 }
 

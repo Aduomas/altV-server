@@ -42,7 +42,7 @@ chat.registerCmd('vehdel', player => {
 
 function loginPlayer(player, password){
     if(password.length < 1){
-        chat.send(player, 'Neįvedei slaptažodžio');
+        alt.emitClient(player, 'showAlertBox', "Neįvestas slaptažodis", "red", 3000);
     } else {
         loginUser(player.name, password, function(result){ //result kintamasis gaunamas iš callback loginUser funkcijoje.
             if(result){ //Gaunamas rezultatas iš callback'o loginUser funkcijoje.
@@ -51,9 +51,9 @@ function loginPlayer(player, password){
                 player.model = 'mp_m_freemode_01';
                 alt.emitClient(player, 'loginCamera', true);
                 alt.emitClient(player, 'loginPageLoad', false);
-                alt.emitClient(player, 'showAlert', ("Sveikas sugrįžęs", "green", 300));
+                alt.emitClient(player, 'showAlertBox', "Sveikas sugrįžęs", "green", 3000);
             } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
-                alt.emitClient(player, 'showAlert', ("Blogas Slaptažodis", "red", 300));
+                alt.emitClient(player, 'showAlertBox', "Blogas Slaptažodis", "red", 3000);
             }
         });
     }
@@ -65,13 +65,13 @@ alt.onClient('loginPlayerFromWeb', (player, arg) =>{
 function registerPlayer(player, password){
     isUserRegistered(player.name, function(result){
         if(result){
-            alt.emitClient(player, 'showAlert', ("Jau esi užsiregistravęs", "red", 300));
+            alt.emitClient(player, 'showAlertBox', "Jau esi užsiregistravęs", "red", 3000);
         } else if (!result){
             console.log(`${player.name} has registered.`);
             registerUser(player.name, password);
             player.spawn(813, -279, 66, 10);
             player.model = 'mp_m_freemode_01';
-            alt.emitClient(player, 'showAlert', ("Sveikas atvykęs", "green", 300));
+            alt.emitClient(player, 'showAlertBox', "Sveikas atvykęs", "green", 3000);
             alt.emitClient(player, 'loginCamera', true);
             alt.emitClient(player, 'registerPageLoad', false);
         }
@@ -81,6 +81,10 @@ function registerPlayer(player, password){
 
 alt.onClient('registerPlayerFromWeb', (player, arg) =>{
     registerPlayer(player, arg);
+});
+
+chat.registerCmd('alert', (player, args) => {
+    player.emit('showAlertBox', args[0], args[1], args[2]);
 });
 
 

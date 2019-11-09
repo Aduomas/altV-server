@@ -1,19 +1,16 @@
-function showAlert(value ,color, duration) {
-    // Get the snackbar DIV
-    var x = document.getElementById("alertBox");
-    
-    x.style.backgroundColor = color;
-    x.innerHTML = value;
-    x.style.fontFamily = "Ubuntu,sans-serif";
-    // Add the "show" class to DIV
-    x.className = "show";
-  
-    // After 3 seconds, remove the show class from DIV
+function showAlertBox(value ,color, duration) {
+    var alert = document.getElementById("alertBox");
+    alert.style.backgroundColor = color;
+    alert.innerHTML = value;
+    alert.style.fontFamily = "Ubuntu,sans-serif";
+    alert.className = "show";
     setTimeout(function(){
-        x.className = x.className.replace("show", "");
+      alert.className = alert.className.replace("show", "");
     }, duration);
   }
-
-  alt.on('showAlert', (text, color, timeout) => {
-    showAlert(text, color, timeout);
-  });
+  if('alt' in window){
+    alt.on('showAlert', (text, color, timeout) => {
+      console.log(text);
+      showAlertBox(text, color, timeout);
+    }
+  )};

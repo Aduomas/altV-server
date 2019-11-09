@@ -59,10 +59,16 @@ registerPage.on('registerPlayerWeb', (arg) =>{
     alt.emitServer('registerPlayerFromWeb', arg);
 });
 
-var alert;
+alt.onServer('showAlertBox', (text, color, timeout) =>{
+    let alert = new alt.WebView("http://resource/client/html/alertBox/alert.html");
+    alert.focus();
+    console.log(text);
+    alt.setTimeout(() => {
+        alert.emit('showAlert', (text, color, timeout));
+    }, 1500);
 
-alt.onServer('showAlert', (text, color, timeout) =>{
-    alert = new alt.WebView("http://resource/client/html/alertBox/alert.html");
-    alert.emit('showAlert', (text, color, timeout));
-    alert.destroy();
+    /*alt.setTimeout(() => {
+        alert.destroy(); 
+    }, timeout);*/
+    alt.log("alert emitted");
 });
