@@ -1,11 +1,12 @@
-[21:58:53] alt:V Server, build #818, branch beta
-[21:58:53] Starting alt:V Server on 0.0.0.0:7788
-[21:58:53] Loading resource core
-[21:58:53] Loading resource chat
-[21:58:53] Loaded resource chat
-[21:58:53] Loaded resource core
-[21:58:53] Starting HTTP server on 0.0.0.0:7788
-[21:58:53] Server started
-[22:01:39] [chat:cmd] Peurost: /login test	
-[22:01:44] [chat:cmd] Peurost: /car t20	
-[22:15:02] [chat:cmd] Peurost: /car hydra	
+[14:50:53] alt:V Server, build #818, branch beta
+[14:50:53] Starting alt:V Server on 0.0.0.0:7788
+[14:50:53] Loading resource core
+[14:50:53] Loading resource chat
+[14:50:53] Loaded resource chat
+[14:50:53] Loaded resource core
+[14:50:53] Starting HTTP server on 0.0.0.0:7788
+[14:50:53] Server started
+[14:52:45][Error] [V8] Exception at core:file:///D:/ALT-V%20Server/resources/chat/index.mjs:110
+[14:52:45][Error]       alt.emitClient(player, 'chatmessage', null, msg);
+[14:52:45][Error]   Error: player or null expected
+    at send (file:///D:/ALT-V%20Server/resources/chat/index.mjs:110:9)

@@ -132,19 +132,19 @@ export function unmute(player) {
 
 // Formatting for in-chat debug messages.
 export function success(message) {
-    broadcast(`{00FF00}[Pavyko] ${message}`);
+    broadcast(`{00FF00}[Success] ${message}`);
 }
 
 export function info(message) {
-    broadcast(`{3399FF}[Info] ${message}`);
+    broadcast(`{FFAB0F}[Info] ${message}`);
 }
 
 export function warning(message) {
-    broadcast(`{FF8989}[Įspėjimas] ${message}`);
+    broadcast(`{FF8989}[Warning] ${message}`);
 }
 
 export function error(message) {
-    broadcast(`{FF0000}[Klaida] ${message}`);
+    broadcast(`{FF0000}[Error] ${message}`);
 }
 
 export function debug(message) {
