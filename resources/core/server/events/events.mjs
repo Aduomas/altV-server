@@ -1,4 +1,5 @@
 import * as alt from "alt";
+import { weaponList } from './weapons.mjs';
 import chat from 'chat';
 import * as auth from '../auth/auth.mjs'
 import { pool, registerUser, isUserRegistered, loginUser } from '../mysql/mysql'
@@ -30,6 +31,34 @@ alt.on('playerConnect', (player) => {
     });
 });
 
-alt.on
+alt.on('giveWeapon', (player, arg) =>
+{
+    const weaponName = arg[0].toLowerCase();
+    
+	if (!weaponList[weaponName])
+		return player.sendMessage('{FF0000}Tokio ginklo nėra.');
+
+	player.giveWeapon(weaponList[weaponName], 999, true);
+});
+
+alt.on('clearWeapons', player =>
+{
+    player.removeAllWeapons();
+});
+
+alt.on('kick', (player, arg) =>
+{
+    alt.Player.all.forEach(player =>
+        {
+            if(player.name == arg[0])
+            {    
+                alt.emitClient(player, 'showAlertBox', `Tu buvai išspirtas už ${arg[1]}`, 'red', 4900);
+                setTimeout(function(){
+                    player.kick();
+                }, 5000);
+
+            }
+        });
+});
 
 console.log(">> Loaded Core Events");

@@ -13,11 +13,22 @@ chat.registerCmd('pos', (player) => {
 });
 
 chat.registerCmd('vehdel', player => {
-    player.vehicle.destroy();
+    if(player.vehicle !== undefined)
+        player.vehicle.destroy();
 });
 
-chat.registerCmd('gun', (player, gun) => {
-    alt.emitServer('gun', gun);
+chat.registerCmd('weapon', (player, arg) => {
+    alt.emit('giveWeapon', player, arg);
+});
+
+chat.registerCmd('clearweapon', player =>
+{
+    alt.emit('clearWeapons', player);
+});
+
+chat.registerCmd('kick', (player, arg) =>
+{
+    alt.emit('kick', player, arg);
 });
 
 console.log(">> Loaded Core Commands");
