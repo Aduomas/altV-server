@@ -30,4 +30,6 @@ alt.on('playerConnect', (player) => {
     });
 });
 
+alt.on
+
 console.log(">> Loaded Core Events");

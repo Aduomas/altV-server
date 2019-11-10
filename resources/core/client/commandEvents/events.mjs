@@ -4,6 +4,3 @@ import chat from 'chat';
 
 
 alt.log("Loaded client.mjs")
-alt.onServer('noclip', (player) =>{
-    // NATIVE nerastas
-});
