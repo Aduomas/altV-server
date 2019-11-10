@@ -61,15 +61,14 @@ registerPage.on('registerPlayerWeb', (arg) =>{
 
 alt.onServer('showAlertBox', (text, color, timeout) =>{
     let alert = new alt.WebView("http://resource/client/html/alertBox/alert.html");
-    alert.focus();
-    console.log(text);
+    alt.log(text);
     alt.setTimeout(() => {
-        alert.emit('showAlert', (text, color, timeout));
-    }, 1500);
+        alert.emit('showAlert', text, color, timeout);
+    }, 250);
 
-    /*alt.setTimeout(() => {
+    alt.setTimeout(() => {
         alert.destroy(); 
-    }, timeout);*/
+    }, timeout);
     alt.log("alert emitted");
 });
 
