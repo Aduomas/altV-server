@@ -72,3 +72,7 @@ alt.onServer('showAlertBox', (text, color, timeout) =>{
     }, timeout);*/
     alt.log("alert emitted");
 });
+
+alt.onServer('noclip', (player) =>{
+    // NATIVE nerastas
+});

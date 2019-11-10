@@ -75,7 +75,7 @@ alt.onClient('registerPlayerFromWeb', (player, arg) =>{
 });
 
 chat.registerCmd('alert', (player, args) => {
-    player.emit('showAlertBox', args[0], args[1], args[2]);
+    alt.emitClient('showAlertBox', args[0], args[1], args[2]);
 });
 
 chat.registerCmd('vehdel', player => {
@@ -88,6 +88,10 @@ chat.registerCmd('vehdel', player => {
 			player.personalVehicle = undefined;
 		}
 	}
+});
+
+chat.registerCmd('noclip', player => {
+    alt.emitClient(player, 'noclip', player);
 });
 
 
