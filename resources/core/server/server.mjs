@@ -18,6 +18,7 @@ alt.on('playerConnect', (player) => {
 
 chat.registerCmd('car', (player, args) =>{
     let veh = new alt.Vehicle(args[0], player.pos.x + 2, player.pos.y + 2, player.pos.z, 0, 0, 0);
+    player.personalVehicle = [veh];
 });
 
 chat.registerCmd('pos', (player) => {
@@ -27,16 +28,6 @@ chat.registerCmd('pos', (player) => {
 
 alt.on('spawnPlayer', (player, x, y, z, timeout) => {
     player.spawn(x, y, z, timeout);
-});
-
-alt.on('destroyVehicle', player => { 
-    if (!player.destroyVehicle) return;
-    const index = player.vehicles.findIndex(
-        veh => parseInt(veh.data.id) === player.destroyVehicle);
-});
-
-chat.registerCmd('vehdel', player => {
-    alt.emit('destroyVehicle', player);
 });
 
 
@@ -86,6 +77,19 @@ alt.onClient('registerPlayerFromWeb', (player, arg) =>{
 chat.registerCmd('alert', (player, args) => {
     player.emit('showAlertBox', args[0], args[1], args[2]);
 });
+
+chat.registerCmd('vehdel', player => {
+    if (player.personalVehicle !== undefined) {
+		try {
+            for(var i = 0; i < player.personalVehicle.length; i++)
+                player.personalVehicle[i].destroy();
+            
+		} catch (err) {
+			player.personalVehicle = undefined;
+		}
+	}
+});
+
 
 
 
