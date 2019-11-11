@@ -35,7 +35,7 @@ alt.on('giveWeapon', (player, arg) =>
 {
     const weaponName = arg[0].toLowerCase();
     
-    let ammo = 999;
+    let ammo = 0;
     if(arg[1].length != 0){
         ammo = arg[1];
     }
