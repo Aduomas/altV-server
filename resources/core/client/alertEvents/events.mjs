@@ -12,5 +12,4 @@ alt.onServer('showAlertBox', (text, color, timeout) =>{
     alt.setTimeout(() => {
         alert.destroy(); 
     }, timeout);
-    alt.log("alert emitted");
 });

@@ -35,15 +35,22 @@ alt.on('giveWeapon', (player, arg) =>
 {
     const weaponName = arg[0].toLowerCase();
     
+    let ammo = 999;
+    if(arg[1].length != 0){
+        ammo = arg[1];
+    }
+
 	if (!weaponList[weaponName])
 		return player.sendMessage('{FF0000}Tokio ginklo nėra.');
 
-	player.giveWeapon(weaponList[weaponName], 999, true);
+    player.giveWeapon(weaponList[weaponName], ammo, true);
+    alt.emitClient(player, 'showAlertBox', `Gavai ${weaponName[0].toUpperCase() + weaponName.slice(1)}`, 'blue', 3000);
 });
 
 alt.on('clearWeapons', player =>
 {
     player.removeAllWeapons();
+    alt.emitClient(player, 'showAlertBox', `Iš tavęs buvo atimti visi ginklai`, 'red', 3000);
 });
 
 alt.on('kick', (player, arg) =>
@@ -52,7 +59,7 @@ alt.on('kick', (player, arg) =>
         {
             if(player.name == arg[0])
             {    
-                alt.emitClient(player, 'showAlertBox', `Tu buvai išspirtas už ${arg[1]}`, 'red', 4900);
+                alt.emitClient(player, 'showAlertBox', `Tu buvai išspirtas už ${arg[1]}`, 'red', 5000);
                 setTimeout(function(){
                     player.kick();
                 }, 5000);

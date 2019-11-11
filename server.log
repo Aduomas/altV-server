@@ -1,8 +1,9 @@
-[14:34:17] alt:V Server, build #818, branch beta
-[14:34:17] Starting alt:V Server on 0.0.0.0:7788
-[14:34:17] Loading resource core
-[14:34:17] Loading resource chat
-[14:34:17] Loaded resource chat
-[14:34:17] Loaded resource core
-[14:34:17] Starting HTTP server on 0.0.0.0:7788
-[14:34:17] Server started
+[15:35:50] alt:V Server, build #818, branch beta
+[15:35:50] Starting alt:V Server on 0.0.0.0:7788
+[15:35:50] Loading resource core
+[15:35:50] Loading resource chat
+[15:35:50] Loaded resource chat
+[15:35:51] Loaded resource core
+[15:35:51] Starting HTTP server on 0.0.0.0:7788
+[15:35:51] Server started
+[15:36:05] [chat:cmd] Peurost: /weapon pistol 25	
