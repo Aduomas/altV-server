@@ -12,6 +12,7 @@
     left: 50%; /* Center the snackbar */
     bottom: 30px; /* 30px from the bottom */
     color: #fff;
+    border-radius: 25px;
   }
   
   /* Show the snackbar when clicking on a button (class added with JavaScript) */
