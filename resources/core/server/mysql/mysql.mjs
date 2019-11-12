@@ -54,6 +54,23 @@ export function isUserRegistered(username, callback){ //Naudojama ar žaidėjas 
       });
 }
 
+export function isUserBanned(username, callback){ 
+  pool.getConnection(function(err, connection) {
+    if(err) throw error;
+      connection.query(`SELECT * FROM accounts`, function (error, results, fields) {
+        if(error) throw error;
+          Object.keys(results).forEach(function(key){ {
+            var result = results[key];
+            if(result.USER == username && result.BANTIME > 0 && result.PERMISSIONLEVEL < 0)
+              return callback(true);
+          }
+          });
+        return callback(false);
+      });
+      connection.release();
+    });
+};
+
 
 export var pool = mysql.createPool(logindetails);
 
