@@ -11,10 +11,16 @@ alt.onServer('loginCamera', (args) => {
     native.pointCamAtCoord(camID, 392.4527587890625, -558.4747314453125, 69.006591796875); // <-- native.getGameplayCamCoords()
     native.renderScriptCams(true, false, 0, true, false);
     native.displayRadar(false);
+    native.transitionToBlurred(10);
+    alt.emit('hidechat');
+    native.disableControlAction(0, 199, true);
     if(args){
         native.renderScriptCams(0);
+        native.disableControlAction(0, 199, false);
         native.destroyCam(camID, false);
         native.displayRadar(true);
+        native.transitionFromBlurred(100);
+        alt.emit('hidechat');
     }
 });
 
@@ -25,14 +31,10 @@ alt.onServer('loginPageLoad', (args) => {
     loginPage.focus();
     if(args){
         alt.showCursor(true);
-        native.transitionToBlurred(10);
-        alt.emit('hidechat');
     } else if (!args){
         alt.showCursor(false);
         loginPage.destroy();
         registerPage.destroy();
-        alt.emit('hidechat');
-        native.transitionFromBlurred(100);
     }
 });
 
@@ -44,14 +46,10 @@ alt.onServer('registerPageLoad', (args) => {
     registerPage.focus();
     if(args){
         alt.showCursor(true);
-        native.transitionToBlurred(10);
-        alt.emit('hidechat');
     } else if (!args){
         alt.showCursor(false);
         registerPage.destroy();
         loginPage.destroy();
-        native.transitionFromBlurred(100);
-        alt.emit('hidechat');
     }
 });
 

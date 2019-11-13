@@ -2,7 +2,7 @@ import * as alt from "alt";
 import chat from 'chat';
 import mysql from 'mysql';
 import { pool, registerUser, isUserRegistered, loginUser, isUserBanned } from '../mysql/mysql'
-import { isCharacter, getUserCharacter } from '../mysql/charsql'
+import { isCharacter, getUserCharacter, createUserCharacter } from '../mysql/charsql'
 
 console.log(">> Loading Core Auth");
 
@@ -23,12 +23,18 @@ export function loginPlayer(player, password){
                 loginUser(player.name, password, function(result){ //result kintamasis gaunamas iš callback loginUser funkcijoje.
                     if(result){ //Gaunamas rezultatas iš callback'o loginUser funkcijoje.
                         console.log(`${player.name} has logged in.`); //Įvykdomi veiksmai jeigu callback paduoda TRUE parametrą.
-                        alt.emit('spawnPlayer', player, 813, -279, 66, 10);
-                        player.model = 'mp_m_freemode_01';
-                        alt.emitClient(player, 'loginCamera', true);
-                        isCharacter(player.name, function(){});
                         alt.emitClient(player, 'loginPageLoad', false);
-                        alt.emitClient(player, 'showAlertBox', "Sveikas sugrįžęs", "green", 3000);
+                        isCharacter(player.name, function(results){
+                            if(results){
+                                getUserCharacter(player);
+                                alt.emit('spawnPlayer', player, 813, -279, 66, 10);
+                                player.model = 'mp_m_freemode_01';
+                                alt.emitClient(player, 'loginCamera', true);
+                                alt.emitClient(player, 'showAlertBox', "Sveikas sugrįžęs", "green", 3000);
+                            } else {
+                                alt.emitClient(player, 'createNewCharacterPage', true);
+                            }
+                        });
                     } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.
                         alt.emitClient(player, 'showAlertBox', "Blogas Slaptažodis", "red", 3000);
                     }
