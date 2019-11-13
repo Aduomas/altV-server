@@ -3,19 +3,12 @@ import { weaponList } from './weapons.mjs';
 import chat from 'chat';
 import * as auth from '../auth/auth.mjs'
 import { pool, registerUser, isUserRegistered, loginUser } from '../mysql/mysql'
+import { isCharacter, getUserCharacter } from '../mysql/charsql'
 
 console.log(">> Loading Core Events");
 
 alt.on('spawnPlayer', (player, x, y, z, timeout) => {
     player.spawn(x, y, z, timeout);
-});
-
-alt.onClient('loginPlayerFromWeb', (player, arg) =>{
-    auth.loginPlayer(player, arg);
-});
-
-alt.onClient('registerPlayerFromWeb', (player, arg) =>{
-    auth.registerPlayer(player, arg);
 });
 
 alt.on('playerConnect', (player) => {
@@ -66,6 +59,14 @@ alt.on('kick', (player, arg) =>
 
             }
         });
+});
+
+alt.onClient('loginPlayerFromWeb', (player, arg) =>{
+    auth.loginPlayer(player, arg);
+});
+
+alt.onClient('registerPlayerFromWeb', (player, arg) =>{
+    auth.registerPlayer(player, arg);
 });
 
 console.log(">> Loaded Core Events");

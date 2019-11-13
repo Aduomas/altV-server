@@ -2,6 +2,7 @@ import * as alt from "alt";
 import chat from 'chat';
 import mysql from 'mysql';
 import { pool, registerUser, isUserRegistered, loginUser, isUserBanned } from '../mysql/mysql'
+import { isCharacter, getUserCharacter } from '../mysql/charsql'
 
 console.log(">> Loading Core Auth");
 
@@ -25,6 +26,7 @@ export function loginPlayer(player, password){
                         alt.emit('spawnPlayer', player, 813, -279, 66, 10);
                         player.model = 'mp_m_freemode_01';
                         alt.emitClient(player, 'loginCamera', true);
+                        isCharacter(player.name, function(){});
                         alt.emitClient(player, 'loginPageLoad', false);
                         alt.emitClient(player, 'showAlertBox', "Sveikas sugrįžęs", "green", 3000);
                     } else if (!result){    //Įvykdomi kiti veiksmai jeigu callback paduoda FALSE parametrą.

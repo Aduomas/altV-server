@@ -41,9 +41,9 @@ export function loginUser(username, password, callback){ //Naudojama prisijungim
 export function isUserRegistered(username, callback){ //Naudojama ar žaidėjas registruotas tikrinimui. Username = player.name., Callback = Funkcija
     pool.getConnection(function(err, connection) {
       if(err) throw error;
-        connection.query(`SELECT USER FROM accounts`, function (error, results, fields) {
+        connection.query(`SELECT USER FROM accounts WHERE USER = ?`, username ,function (error, results, fields) {
           if(error) throw error;
-          if(JSON.stringify(results).includes(username)){
+          if(results){
             return callback(true); //Returnina TRUE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
           } else {
             if(error) throw error;
