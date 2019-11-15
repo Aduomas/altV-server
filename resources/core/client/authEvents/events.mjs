@@ -12,7 +12,7 @@ alt.onServer('loginCamera', (args) => {
     native.renderScriptCams(true, false, 0, true, false);
     native.displayRadar(false);
     native.transitionToBlurred(10);
-    alt.emit('hidechat');
+    alt.emit('hidechat', true);
     native.disableControlAction(0, 199, true);
     if(args){
         native.renderScriptCams(0);
@@ -20,7 +20,7 @@ alt.onServer('loginCamera', (args) => {
         native.destroyCam(camID, false);
         native.displayRadar(true);
         native.transitionFromBlurred(100);
-        alt.emit('hidechat');
+        alt.emit('hidechat', false);
     }
 });
 

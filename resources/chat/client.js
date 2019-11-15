@@ -89,9 +89,8 @@ alt.on('keyup', (key) => {
 	}
 });
 
-alt.on('hidechat', ()=> {
-	hidden = !hidden;
-	view.emit('hideChat', hidden);
+alt.on('hidechat', (args)=> {
+	view.emit('hideChat', args);
 	view.emit('closeChat');
 	alt.emit('chatClosed');
 	alt.toggleGameControls(true);
