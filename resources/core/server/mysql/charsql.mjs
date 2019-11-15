@@ -8,7 +8,7 @@ export function isCharacter(player, callback){
         if (err) throw err;
         connection.query(`SELECT * FROM characters WHERE owner = ?`, player.name, function (error, results, fields) {
             if(error) throw error;
-            if(results){
+            if(results.length > 0){
                 return callback(true);
             } else {
                 return callback(false);
