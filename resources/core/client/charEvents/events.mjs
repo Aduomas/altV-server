@@ -2,8 +2,10 @@ import * as alt from 'alt';
 import * as native from 'natives';
 import chat from 'chat';
 
+var charPage = new alt.WebView("http:/resource/client/html/characters/character.html");
+
 alt.onServer('createNewCharacterPage', (args) => {
-    const charPage = new alt.WebView("http:/resource/client/html/characters/character.html");
+    charPage.emit('show');
     if(args){
         charPage.focus();
         alt.showCursor(true);
@@ -12,9 +14,14 @@ alt.onServer('createNewCharacterPage', (args) => {
     }
 });
 
-alt.on('createNewChar', (args) => {
-    args.forEach(element => {
-        console.log(args[element]);
-    });
-    createUserCharacter(alt.Player, args);
+charPage.on('createNewChar', (args) => {
+    alt.emit('createNewCharacterPage', false);
+    alt.emitServer('createCharacterFromWeb', args);
+});
+
+
+charPage.on('WebPageLoaded', () => {
+    alt.setTimeout(() => {
+        charPage.emit('hide');
+    }, 500);
 });

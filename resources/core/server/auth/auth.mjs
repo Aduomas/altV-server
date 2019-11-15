@@ -24,12 +24,9 @@ export function loginPlayer(player, password){
                     if(result){ //Gaunamas rezultatas iš callback'o loginUser funkcijoje.
                         console.log(`${player.name} has logged in.`); //Įvykdomi veiksmai jeigu callback paduoda TRUE parametrą.
                         alt.emitClient(player, 'loginPageLoad', false);
-                        isCharacter(player.name, function(results){
+                        isCharacter(player, function(results){
                             if(results){
                                 getUserCharacter(player);
-                                alt.emit('spawnPlayer', player, 813, -279, 66, 10);
-                                player.model = 'mp_m_freemode_01';
-                                alt.emitClient(player, 'loginCamera', true);
                                 alt.emitClient(player, 'showAlertBox', "Sveikas sugrįžęs", "green", 3000);
                             } else {
                                 alt.emitClient(player, 'createNewCharacterPage', true);

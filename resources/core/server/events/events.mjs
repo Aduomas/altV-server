@@ -3,7 +3,8 @@ import { weaponList } from './weapons.mjs';
 import chat from 'chat';
 import * as auth from '../auth/auth.mjs'
 import { pool, registerUser, isUserRegistered, loginUser } from '../mysql/mysql'
-import { isCharacter, getUserCharacter } from '../mysql/charsql'
+import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter } from '../mysql/charsql'
+import { create } from "domain";
 
 console.log(">> Loading Core Events");
 
@@ -67,6 +68,20 @@ alt.onClient('loginPlayerFromWeb', (player, arg) =>{
 
 alt.onClient('registerPlayerFromWeb', (player, arg) =>{
     auth.registerPlayer(player, arg);
+});
+
+alt.onClient('createCharacterFromWeb', (player, args) => {
+    createUserCharacter(player, args);
+    console.log(`${player.name} created a character.`);
+    alt.emit('spawnPlayer', player, 813, -279, 66, 10);
+    player.model = 'mp_m_freemode_01';
+    alt.emitClient(player, 'loginCamera', true);
+    alt.emitClient(player, 'showAlertBox', "Veikėjas sėkmingai sukurtas", "green", 3000);
+});
+
+alt.on('playerDisconnect', (player) => {
+    console.log(`${player.name} has disconnected`);
+    saveUserCharacter(player.name, JSON.stringify(player.pos))
 });
 
 console.log(">> Loaded Core Events");
