@@ -16,7 +16,7 @@ var logindetails = {
 export function registerUser(username, password){ //Naudojama užregistruoti vartotoją. username = player.name. Password = input.
     pool.getConnection(function(err, connection) {
     if (err) throw err;
-    connection.query(`INSERT INTO accounts (USER, PASSWORD) VALUES ('${username}', '${encrypt.encryptPassword(password)}')`, function (error, results, fields) {
+    connection.query(`INSERT INTO accounts (USER, PASSWORD, PERMISSIONLEVEL) VALUES ('${username}', '${encrypt.encryptPassword(password)}', 'USER')`, function (error, results, fields) {
       if (error) throw error;
     });
     connection.release();
@@ -43,7 +43,7 @@ export function isUserRegistered(username, callback){ //Naudojama ar žaidėjas 
       if(err) throw error;
         connection.query(`SELECT USER FROM accounts WHERE USER = ?`, username ,function (error, results, fields) {
           if(error) throw error;
-          if(results){
+          if(results.length){
             return callback(true); //Returnina TRUE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą
           } else {
             if(error) throw error;

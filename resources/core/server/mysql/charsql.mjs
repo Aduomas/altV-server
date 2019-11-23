@@ -8,7 +8,7 @@ export function isCharacter(player, callback){
         if (err) throw err;
         connection.query(`SELECT * FROM characters WHERE owner = ?`, player.name, function (error, results, fields) {
             if(error) throw error;
-            if(results.length > 0){
+            if(results.length){
                 return callback(true);
             } else {
                 return callback(false);
@@ -23,14 +23,18 @@ export function getUserCharacter(player){
         if (err) throw err;
         connection.query(`SELECT * FROM characters WHERE owner = ?`, player.name,function (error, results, fields) {
             if(error) throw error;
-            if(results){
+            if(results.length){
                 player.setMeta('firstName', results[0].firstname);
                 player.setMeta('lastName', results[0].lastname);
                 player.setMeta('birthDate', results[0].birthdate);
                 player.setMeta('gender', results[0].gender);
                 player.setMeta('charID', results[0].id);
                 alt.emit('spawnPlayer', player, 813, -279, 66, 10);
-                player.model = 'mp_m_freemode_01';
+                if(results.gender == "Vyras"){
+                    player.model = 'mp_m_freemode_01';
+                } else {
+                    player.model = 'mp_f_freemode_01';
+                }
                 alt.emit('spawnPlayer', player, JSON.parse(results[0].pos).x, JSON.parse(results[0].pos).y, JSON.parse(results[0].pos).z);
                 alt.emitClient(player, 'loginCamera', true);
             }

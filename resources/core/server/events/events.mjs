@@ -74,7 +74,6 @@ alt.onClient('createCharacterFromWeb', (player, args) => {
     createUserCharacter(player, args);
     console.log(`${player.name} created a character.`);
     alt.emit('spawnPlayer', player, 813, -279, 66, 10);
-    player.model = 'mp_m_freemode_01';
     alt.emitClient(player, 'loginCamera', true);
     alt.emitClient(player, 'showAlertBox', "Veikėjas sėkmingai sukurtas", "green", 3000);
 });

@@ -14,12 +14,12 @@ function registerPlayer(){
 
 function show()
 {
-    document.getElementById("body").style.display = "block";
+    document.getElementById("limiter").style.display = "block";
 }
 
 function hide()
 {
-    document.getElementById("body").style.display = "none";
+    document.getElementById("limiter").style.display = "none";
 }
 
 if('alt' in window){

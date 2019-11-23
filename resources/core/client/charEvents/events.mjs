@@ -11,6 +11,7 @@ alt.onServer('createNewCharacterPage', (args) => {
         alt.showCursor(true);
     } else if (!args){
         charPage.destroy();
+        alt.showCursor(false);
     }
 });
 
