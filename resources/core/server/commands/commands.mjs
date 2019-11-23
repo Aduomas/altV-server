@@ -31,4 +31,8 @@ chat.registerCmd('kick', (player, arg) =>
     alt.emit('kick', player, arg);
 });
 
+chat.registerCmd('face', (player) => {
+    alt.emitClient(player, 'createNewFaceCreationPage', true);
+});
+
 console.log(">> Loaded Core Commands");

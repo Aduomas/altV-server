@@ -30,7 +30,7 @@ export function getUserCharacter(player){
                 player.setMeta('gender', results[0].gender);
                 player.setMeta('charID', results[0].id);
                 alt.emit('spawnPlayer', player, 813, -279, 66, 10);
-                if(results.gender == "Vyras"){
+                if(results[0].gender == "Vyras"){
                     player.model = 'mp_m_freemode_01';
                 } else {
                     player.model = 'mp_f_freemode_01';
