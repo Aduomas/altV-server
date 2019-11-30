@@ -26,13 +26,13 @@ chat.registerCmd('clearweapon', player =>
     alt.emit('clearWeapons', player);
 });
 
+chat.registerCmd('face', (player) => {
+    alt.emitClient(player, 'createNewFaceCreationPage', true);
+});
+
 chat.registerCmd('kick', (player, arg) =>
 {
     alt.emit('kick', player, arg);
-});
-
-chat.registerCmd('face', (player) => {
-    alt.emitClient(player, 'createNewFaceCreationPage', true);
 });
 
 console.log(">> Loaded Core Commands");

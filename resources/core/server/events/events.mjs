@@ -3,8 +3,7 @@ import { weaponList } from './weapons.mjs';
 import chat from 'chat';
 import * as auth from '../auth/auth.mjs'
 import { pool, registerUser, isUserRegistered, loginUser } from '../mysql/mysql'
-import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter } from '../mysql/charsql'
-import { create } from "domain";
+import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
 
 console.log(">> Loading Core Events");
 
@@ -68,6 +67,10 @@ alt.onClient('loginPlayerFromWeb', (player, arg) =>{
 
 alt.onClient('registerPlayerFromWeb', (player, arg) =>{
     auth.registerPlayer(player, arg);
+});
+
+alt.onClient('saveCharacterFaceFromWeb', (player, faceArgs) => {
+    saveCharacterFace(player.name, faceArgs);
 });
 
 alt.onClient('createCharacterFromWeb', (player, args) => {

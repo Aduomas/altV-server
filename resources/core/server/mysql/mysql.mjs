@@ -5,7 +5,7 @@ import * as encrypt from'../utility/encryption.mjs';
 
 
 var logindetails = {
-    connectionLimit : 30,
+    connectionLimit : 100,
     host: "remotemysql.com",
     user:"DFyex81QX5",
     password: "aJamUq7sBD",
