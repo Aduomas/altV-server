@@ -40,17 +40,14 @@ charPage.on('WebPageLoaded', () => {
 });
 
 alt.on('changeFace', (args) => {
-    alt.log(args);
     native.setPedHeadBlendData(alt.Player.local.scriptID, 0, 0, 0, 0, 0, 0, 0, 0, 0, false);
+    alt.log(args.status);
     native.setPedHeadBlendData( alt.Player.local.scriptID, args.motherFace, args.dadFace, 0, args.motherSkin, args.fatherSkin, 0, args.faceMix / 100, args.skinMix / 100, 0, false);
-    alt.emitServer('saveCharacterFaceFromWeb', (args))
+    if(args.status)
+        alt.emitServer('saveCharacterFaceFromWeb', (args))
 });
 
-alt.onServer('changeFace', (args) => {
-    alt.emit('changeFace', args);
-});
-
-facePage.on('changeFaceWeb', (args) => {
+facePage.on('changeFaceWeb', (args,) => {
     alt.emit('createNewFaceCreationPage', false);
     alt.emit('changeFace', args);
 });

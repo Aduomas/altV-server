@@ -55,8 +55,12 @@ export function createUserCharacter(player, args){
 }
 
 export function saveUserCharacter(playerName, pos){
-    connection.query(`UPDATE characters SET pos = '${pos}' WHERE owner = ?`, playerName, function (error, results, fields) {
-        if(error) throw error;
+    pool.getConnection(function(err, connection) {
+        if (err) throw err;
+        connection.query(`UPDATE characters SET pos = '${pos}' WHERE owner = ?`, playerName, function (error, results, fields) {
+            if(error) throw error;
+        });
+        connection.release();
     });
 };
 
