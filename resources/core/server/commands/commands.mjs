@@ -1,5 +1,6 @@
 import * as alt from "alt";
 import chat from 'chat';
+import * as extended from 'altV-extended'
 
 console.log(">> Loading Core Commands");
 

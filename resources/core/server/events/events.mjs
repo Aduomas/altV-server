@@ -4,6 +4,7 @@ import chat from 'chat';
 import * as auth from '../auth/auth.mjs'
 import { pool, registerUser, checkUserStatus, loginUser, bannedHandler } from '../mysql/mysql'
 import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
+import * as extended from 'altV-extended'
 
 console.log(">> Loading Core Events");
 

@@ -1,6 +1,7 @@
 import * as alt from 'alt';
 import * as native from 'natives';
 import chat from 'chat';
+import * as extended from 'altV-extended'
 
 alt.onServer('loginCamera', (args) => {
     let camID = null;
