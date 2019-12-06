@@ -30,7 +30,7 @@ export function loginUser(player, password, callback){ //Naudojama prisijungimui
       if (error) throw error;
       for(let i = 0; i < results.length; i++){
         if(results[i].USER == player.name && encrypt.verifyPassword(password, results[i].PASSWORD))
-        connection.query(`UPDATE accounts SET LASTIP = '${player.ip}' WHERE USER = '${player.name}'`, function (error, results, fields) {
+        connection.query(`UPDATE accounts SET LASTIP = '${player.ip.slice(7)}' WHERE USER = '${player.name}'`, function (error, results, fields) {
           if (error) throw error;
         });
           return callback(true); //Returnina TRUE callback funkcijai kuri naudojama kitame skripte apdorojant rezultatą

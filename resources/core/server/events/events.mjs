@@ -14,7 +14,7 @@ alt.on('spawnPlayer', (player, x, y, z, timeout) => {
 alt.on('playerConnect', (player) => {
     checkUserStatus(player, function(result){
         alt.emitClient(player, 'loginCamera');
-        player.spawn(740.085693359375, -310.8219909667969, 59.879150390625, 500);
+        player.spawn(740.085693359375, -330.8219909667969, 53.879150390625, 500);  
         if(result === true){
             console.log(`${player.name} has connected.`);
             alt.emitClient(player, 'loginPageLoad', true);
@@ -90,6 +90,11 @@ alt.onClient('createCharacterFromWeb', (player, args) => {
 alt.on('playerDisconnect', (player) => {
     console.log(`${player.name} has disconnected`);
     saveUserCharacter(player.name, JSON.stringify(player.pos))
+});
+
+alt.on('testingStuff', (player) => {
+    player.char = {stamina: 0};
+    player.char.stamina = 100;
 });
 
 console.log(">> Loaded Core Events");
