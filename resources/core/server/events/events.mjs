@@ -2,7 +2,7 @@ import * as alt from "alt";
 import { weaponList } from './weapons.mjs';
 import chat from 'chat';
 import * as auth from '../auth/auth.mjs'
-import { pool, registerUser, checkUserStatus, loginUser, bannedHandler } from '../mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../mysql/mysql'
 import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
 import * as extended from 'altV-extended'
 
@@ -16,8 +16,8 @@ alt.on('playerConnect', (player) => {
     checkUserStatus(player, function(result){
         alt.emitClient(player, 'loginCamera');
         player.spawn(740.085693359375, -330.8219909667969, 53.879150390625, 500);  
+        console.log(`${player.name} has connected.`);
         if(result === true){
-            console.log(`${player.name} has connected.`);
             alt.emitClient(player, 'loginPageLoad', true);
         } else if (result === false){
             alt.emitClient(player, 'registerPageLoad', true);
@@ -62,6 +62,24 @@ alt.on('kick', (player, arg) =>
 
             }
         });
+});
+
+alt.on('ban', (player, arg) => // /ban Name Reason Time
+{
+    alt.Player.all.forEach(player =>
+        {
+            if(player.name == arg[0])
+            {
+                banUser(player, (result) => {
+                    if(result)
+                    console.log(`${player.name} buvo sėkmingai užblokuotas!`);
+                });
+                alt.emitClient(player, 'showAlertBox', `Tu buvai ištremptas už ${arg[1]}`, 'red', 5000);
+                setTimeout(function(){
+                    player.kick();
+                }, 5000);
+            }
+        })
 });
 
 alt.onClient('loginPlayerFromWeb', (player, arg) => {

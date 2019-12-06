@@ -25,9 +25,10 @@ alt.onServer('loginCamera', (args) => {
     }
 });
 
+
 const registerPage = new alt.WebView("http:/resource/client/html/login/register.html");
 const loginPage = new alt.WebView("http:/resource/client/html/login/login.html");
-const bannedPage = new alt.WebView("http:/resource/client/html/empty/index.html");
+const bannedPage = new alt.WebView("http:/resource/client/html/ban/index.html");
 
 alt.onServer('loginPageLoad', (args) => {
     loginPage.focus();
@@ -60,6 +61,7 @@ registerPage.on('registerPlayerWeb', (arg) =>{
 });
 
 alt.onServer('bannedPageLoad', (args) => {
+
     bannedPage.focus();
     loginPage.destroy();
     registerPage.destroy();
@@ -71,4 +73,8 @@ alt.onServer('bannedPageLoad', (args) => {
         loginPage.destroy();
         registerPage.destroy();
     }
+});
+
+bannedPage.on('kickPlayerWeb',() => {
+    alt.Player.kick();
 });

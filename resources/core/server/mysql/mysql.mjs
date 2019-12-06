@@ -78,6 +78,18 @@ export function bannedHandler(player, callback){
   });
 }
 
+export function banUser(player, callback) {
+  pool.getConnection(function(err, connection) {
+    if(err) throw error;
+    connection.query(`UPDATE accounts SET BANNED = "TRUE" WHERE USER = ?`, player.name ,function (error, results, fields) {
+      if(error) throw error;
+      return callback(true);
+    });
+    connection.release();
+  });
+
+}
+
 
 export var pool = mysql.createPool(logindetails);
 

@@ -36,6 +36,11 @@ chat.registerCmd('kick', (player, arg) =>
     alt.emit('kick', player, arg);
 });
 
+chat.registerCmd('ban', (player, arg) =>
+{
+    alt.emit('ban', player, arg);
+});
+
 chat.registerCmd('testChar', (player) => {
     alt.emit('testingStuff', player);
     alt.emit('testingStuff2', player);
