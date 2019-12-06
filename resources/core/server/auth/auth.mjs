@@ -1,7 +1,7 @@
 import * as alt from "alt";
 import chat from 'chat';
 import mysql from 'mysql';
-import { pool, registerUser, isUserRegistered, loginUser, isUserBanned } from '../mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler } from '../mysql/mysql'
 import { isCharacter, getUserCharacter, createUserCharacter } from '../mysql/charsql'
 
 console.log(">> Loading Core Auth");
@@ -10,7 +10,7 @@ export function loginPlayer(player, password){
     if(password.length < 1){
         return;
     } else {
-            loginUser(player.name, password, function(result){ //result kintamasis gaunamas iš callback loginUser funkcijoje.
+            loginUser(player, password, function(result){ //result kintamasis gaunamas iš callback loginUser funkcijoje.
                 if(result){ //Gaunamas rezultatas iš callback'o loginUser funkcijoje.
                     console.log(`${player.name} has logged in.`); //Įvykdomi veiksmai jeigu callback paduoda TRUE parametrą.
                     alt.emitClient(player, 'loginPageLoad', false);
@@ -30,7 +30,7 @@ export function loginPlayer(player, password){
 }
 
 export function registerPlayer(player, password){
-    isUserRegistered(player.name, function(result){
+    checkUserStatus(player, function(result){
         if(result){
             alt.emitClient(player, 'showAlertBox', "Jau esi užsiregistravęs", "red", 3000);
         } else if (!result){

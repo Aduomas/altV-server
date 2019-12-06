@@ -2,7 +2,7 @@ import * as alt from "alt";
 import { weaponList } from './weapons.mjs';
 import chat from 'chat';
 import * as auth from '../auth/auth.mjs'
-import { pool, registerUser, isUserRegistered, loginUser } from '../mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler } from '../mysql/mysql'
 import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
 
 console.log(">> Loading Core Events");
@@ -12,14 +12,16 @@ alt.on('spawnPlayer', (player, x, y, z, timeout) => {
 });
 
 alt.on('playerConnect', (player) => {
-    isUserRegistered(player.name, function(result){
+    checkUserStatus(player, function(result){
         alt.emitClient(player, 'loginCamera');
         player.spawn(740.085693359375, -310.8219909667969, 59.879150390625, 500);
-        if(result){
-           console.log(`${player.name} has connected.`);
-          alt.emitClient(player, 'loginPageLoad', true);
-        } else if (!result){
-           alt.emitClient(player, 'registerPageLoad', true);
+        if(result === true){
+            console.log(`${player.name} has connected.`);
+            alt.emitClient(player, 'loginPageLoad', true);
+        } else if (result === false){
+            alt.emitClient(player, 'registerPageLoad', true);
+        } else if (result === 'banned') {
+            alt.emitClient(player, 'bannedPageLoad', true);
         }
     });
 });
@@ -61,8 +63,12 @@ alt.on('kick', (player, arg) =>
         });
 });
 
-alt.onClient('loginPlayerFromWeb', (player, arg) =>{
+alt.onClient('loginPlayerFromWeb', (player, arg) => {
     auth.loginPlayer(player, arg);
+});
+
+alt.onClient('getPlayerBanned', (player) => {
+    bannedHandler(player);
 });
 
 alt.onClient('registerPlayerFromWeb', (player, arg) =>{

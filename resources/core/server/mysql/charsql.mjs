@@ -1,7 +1,7 @@
 import * as alt from "alt";
 import chat from 'chat';
 import mysql from 'mysql';
-import { pool, registerUser, isUserRegistered, loginUser, isUserBanned } from '../mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler } from '../mysql/mysql'
 
 export function isCharacter(player, callback){
     pool.getConnection(function(err, connection) {
