@@ -70,11 +70,12 @@ alt.on('ban', (player, arg) => // /ban Name Reason Time
         {
             if(player.name == arg[0])
             {
+                player.banReason = arg[1];
                 banUser(player, (result) => {
                     if(result)
                     console.log(`${player.name} buvo sėkmingai užblokuotas!`);
                 });
-                alt.emitClient(player, 'showAlertBox', `Tu buvai ištremptas už ${arg[1]}`, 'red', 5000);
+                alt.emitClient(player, 'showAlertBox', `Tu buvai ištremptas už ${player.banReason}`, 'red', 5000);
                 setTimeout(function(){
                     player.kick();
                 }, 5000);

@@ -83,9 +83,12 @@ export function banUser(player, callback) {
     if(err) throw error;
     connection.query(`UPDATE accounts SET BANNED = "TRUE" WHERE USER = ?`, player.name ,function (error, results, fields) {
       if(error) throw error;
-      return callback(true);
+    });
+    connection.query(`INSERT into bans (USER, REASON) VALUES ('${player.name}', '${player.banReason}')`,function (error, results, fields) {
+      if(error) throw error;
     });
     connection.release();
+    return callback(true);
   });
 
 }
