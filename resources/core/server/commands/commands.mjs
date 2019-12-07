@@ -41,14 +41,4 @@ chat.registerCmd('ban', (player, arg) =>
     alt.emit('ban', player, arg);
 });
 
-chat.registerCmd('testChar', (player) => {
-    alt.emit('testingStuff', player);
-    alt.emit('testingStuff2', player);
-    alt.emitClient(player, 'testingClientStuff', player);
-});
-
-alt.on('testingStuff2', (player) => {
-    console.log(player.char.stamina);
-});
-
 console.log(">> Loaded Core Commands");

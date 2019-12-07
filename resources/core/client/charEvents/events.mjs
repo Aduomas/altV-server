@@ -2,7 +2,6 @@ import * as alt from 'alt';
 import * as native from 'natives';
 import chat from 'chat';
 import * as extended from 'altV-extended'
-import { banUser } from '../../server/mysql/mysql.mjs';
 
 var charPage = new alt.WebView("http:/resource/client/html/characters/character.html");
 var facePage = new alt.WebView("http:/resource/client/html/clothes/clothingMenu.html");

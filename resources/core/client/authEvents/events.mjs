@@ -38,6 +38,7 @@ alt.onServer('loginPageLoad', (args) => {
         alt.showCursor(false);
         loginPage.destroy();
         registerPage.destroy();
+        bannedPage.destroy();
     }
 });
 
@@ -53,6 +54,7 @@ alt.onServer('registerPageLoad', (args) => {
         alt.showCursor(false);
         registerPage.destroy();
         loginPage.destroy();
+        bannedPage.destroy();
     }
 });
 
