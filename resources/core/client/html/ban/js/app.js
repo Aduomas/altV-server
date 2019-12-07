@@ -1,5 +1,7 @@
 function kickPlayer(){
-
+    if('alt' in window){
+        alt.emit('kickPlayerWeb');
+    }
 }
 
 function loadDetails(username, reason, type, length){

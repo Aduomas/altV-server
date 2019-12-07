@@ -94,6 +94,14 @@ alt.onClient('registerPlayerFromWeb', (player, arg) =>{
     auth.registerPlayer(player, arg);
 });
 
+alt.onClient('kickPlayerFromWeb', (player) =>
+{
+    alt.emitClient(player, 'showAlertBox', `Sėkmingai atsijungei!`, 'red', 3000);
+    setTimeout(function(){
+        player.kick();
+    }, 3000);
+});
+
 alt.onClient('saveCharacterFaceFromWeb', (player, faceArgs) => {
     saveCharacterFace(player.name, faceArgs);
 });

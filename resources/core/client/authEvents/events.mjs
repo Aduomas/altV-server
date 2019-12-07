@@ -78,5 +78,5 @@ alt.onServer('bannedPageLoad', (args) => {
 });
 
 bannedPage.on('kickPlayerWeb',() => {
-    alt.Player.kick();
+    alt.emitServer('kickPlayerFromWeb', alt.Player);
 });
