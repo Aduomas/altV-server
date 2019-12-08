@@ -15,3 +15,5 @@ import * as authEvents from '../systems/auth/authEvents.mjs'
 import * as charEvents from '../systems/character/charEvents.mjs'
 
 console.log(">> Loaded Core Events");
+
+//Testing Brancher here.
