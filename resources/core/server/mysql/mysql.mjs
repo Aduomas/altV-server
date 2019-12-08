@@ -88,7 +88,6 @@ export function banUser(player, callback) {
       if(error) throw error;
     });
     connection.release();
-    return callback(true);
   });
 
 }
