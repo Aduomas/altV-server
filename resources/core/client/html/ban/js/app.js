@@ -20,6 +20,7 @@ function show()
     document.getElementsByTagName("body")[0].style.display = "block";
 }
 
+
 function hide()
 {   
     document.getElementsByTagName("body")[0].style.display = "none";
