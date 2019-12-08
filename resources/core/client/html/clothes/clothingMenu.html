@@ -31,12 +31,53 @@
             </div>
             <div class="slidecontainer">
                 <div class="label" id="faceMixLabel">Veidų skirtumas</div>
-                <input type="range" min="0" max="100" value="50" class="slider" id="faceMix">
+                <input type="range" min="0" max="100" value="0" class="slider" id="faceMix">
             </div>
             <div class="slidecontainer">
                 <div class="label" id="skinMixLabel">Odos skirtumas</div>
-                <input type="range" min="0" max="100" value="50" class="slider" id="skinMix">
+                <input type="range" min="0" max="100" value="0" class="slider" id="skinMix">
             </div>
+            <div class="slidecontainer">
+                <div class="label" id="hairLabel">Plaukai</div>
+                <input type="range" min="0" max="75" value="0" class="slider" id="hair">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="hairColorLabel">Plauku spalva</div>
+                <input type="range" min="0" max="64" value="0" class="slider" id="hairColor">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="hairSecColorLabel">Plauku Antra spalva</div>
+                <input type="range" min="0" max="64" value="0" class="slider" id="hairSecColor">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="hairHColorLabel">Plauku spalvos atspalvis</div>
+                <input type="range" min="0" max="100" value="0" class="slider" id="hairHColor">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="beardLabel">Barzda</div>
+                <input type="range" min="0" max="28" value="0" class="slider" id="beard">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="beardOpacityLabel">Barzdos ryškumas</div>
+                <input type="range" min="0" max="100" value="0" class="slider" id="beardOpacity">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="eyebrowsLabel">Antakiai</div>
+                <input type="range" min="0" max="33" value="0" class="slider" id="eyebrows">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="eyebrowsOpacityLabel">Antakių ryškumas</div>
+                <input type="range" min="0" max="100" value="0" class="slider" id="eyebrowsOpacity">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="faceColorLabel">Veido plaukų spalva</div>
+                <input type="range" min="0" max="64" value="0" class="slider" id="faceColor">
+            </div>
+            <div class="slidecontainer">
+                <div class="label" id="faceSecColorLabel">Veido plaukų antra spalva</div>
+                <input type="range" min="0" max="64" value="0" class="slider" id="faceSecColor">
+            </div>
+
             <div class="buttonContainer">
                 <button class="confirmButton" onclick="sendFaceData()">
                     Išsaugoti
