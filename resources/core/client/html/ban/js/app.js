@@ -20,6 +20,9 @@ function show()
     document.getElementsByTagName("body")[0].style.display = "block";
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+    hide();
+});
 
 function hide()
 {   

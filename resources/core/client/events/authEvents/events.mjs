@@ -31,7 +31,6 @@ const loginPage = new alt.WebView("http:/resource/client/html/login/login.html")
 const bannedPage = new alt.WebView("http:/resource/client/html/ban/index.html");
 
 alt.onServer('loginPageLoad', (args) => {
-    bannedPage.destroy();
     loginPage.focus();
     if(args){
         alt.showCursor(true);
@@ -48,7 +47,6 @@ loginPage.on('loginPlayerWeb', (arg) =>{
 });
 
 alt.onServer('registerPageLoad', (args) => {
-    bannedPage.destroy();
     registerPage.focus();
     if(args){
         alt.showCursor(true);
@@ -65,6 +63,7 @@ registerPage.on('registerPlayerWeb', (arg) =>{
 });
 
 alt.onServer('bannedPageLoad', (args) => {
+    bannedPage.emit('show');
     bannedPage.focus();
     loginPage.destroy();
     registerPage.destroy();
