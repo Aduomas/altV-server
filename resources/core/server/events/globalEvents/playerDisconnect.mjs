@@ -1,5 +1,5 @@
 import * as alt from "alt";
-import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
+import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../../systems/mysql/charsql'
 import * as extended from 'altV-extended'
 
 alt.on('playerDisconnect', (player) => {

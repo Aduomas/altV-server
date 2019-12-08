@@ -1,5 +1,5 @@
 import * as alt from "alt";
-import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../../systems/mysql/mysql'
 
 alt.on('playerConnect', (player) => {
     checkUserStatus(player, function(result){

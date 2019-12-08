@@ -6,7 +6,7 @@ import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser 
 import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
 import * as extended from 'altV-extended'
 
-lt.onClient('loginPlayerFromWeb', (player, arg) => {
+alt.onClient('loginPlayerFromWeb', (player, arg) => {
     auth.loginPlayer(player, arg);
 });
 

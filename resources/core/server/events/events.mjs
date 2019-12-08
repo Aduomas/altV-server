@@ -1,9 +1,9 @@
 import * as alt from "alt";
-import { weaponList } from '../utility/weapons.mjs';
+import { weaponList } from '../systems/utility/weapons.mjs';
 import chat from 'chat';
 import * as auth from '../systems/auth/auth.mjs'
-import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../mysql/mysql'
-import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../systems/mysql/mysql'
+import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../systems/mysql/charsql'
 import * as extended from 'altV-extended'
 
 console.log(">> Loading Core Events");
@@ -15,5 +15,3 @@ import * as authEvents from '../systems/auth/authEvents.mjs'
 import * as charEvents from '../systems/character/charEvents.mjs'
 
 console.log(">> Loaded Core Events");
-
-//Testing Brancher here.

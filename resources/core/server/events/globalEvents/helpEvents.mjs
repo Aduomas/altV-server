@@ -1,9 +1,9 @@
 import * as alt from "alt";
-import { weaponList } from '../utility/weapons.mjs';
+import { weaponList } from '../../systems/utility/weapons.mjs';
 import chat from 'chat';
-import * as auth from '../auth/auth.mjs'
-import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../mysql/mysql'
-import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../mysql/charsql'
+import * as auth from '../../systems/auth/auth.mjs'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../../systems/mysql/mysql'
+import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../../systems/mysql/charsql'
 import * as extended from 'altV-extended'
 
 alt.on('spawnPlayer', (player, x, y, z, timeout) => {
