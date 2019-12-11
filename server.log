@@ -1,10 +1,23 @@
-[12:41:28] alt:V Server, build #891, branch beta
-[12:41:28] Starting alt:V Server on 0.0.0.0:7788
-[12:41:28] Loading resource core
-[12:41:28] Loading resource chat
-[12:41:28] Loaded resource chat
-[12:41:28] Loading resource altV-extended
-[12:41:29] Loaded resource altV-extended
-[12:41:29] Loaded resource core
-[12:41:29] Starting HTTP server on 0.0.0.0:7788
-[12:41:29] Server started
+[16:05:16] alt:V Server, build #891, branch beta
+[16:05:16] Starting alt:V Server on 0.0.0.0:7788
+[16:05:16] Loading resource core
+[16:05:17] Loading resource chat
+[16:05:17] Loaded resource chat
+[16:05:17] Loading resource altV-extended
+[16:05:17] Loaded resource altV-extended
+[16:05:20] Loaded resource core
+[16:05:20] Starting HTTP server on 0.0.0.0:7788
+[16:05:20] Server started
+[16:13:18] [chat:cmd] Peurost: /car hydra	
+[16:14:21] [chat:cmd] Peurost: /revive	
+[16:14:27] [chat:cmd] Peurost: /tpSky 500 500 500	
+[16:14:40] [chat:cmd] Peurost: /tpSky 500 500 500	
+[16:14:51] [chat:cmd] Peurost: /tpSky 500 500 100	
+[16:15:06] [chat:cmd] Peurost: /car elegy	
+[16:19:14] [chat:cmd] Peurost: /vehdel	
+[16:19:20] [chat:cmd] Peurost: /car t20	
+[16:22:20] [chat:cmd] Peurost: /vehdel	
+[16:22:26] [chat:cmd] Peurost: /car elegy	
+[16:24:44] [chat:cmd] Peurost: /vehdel	
+[16:24:51] [chat:cmd] Peurost: /car zentorno	
+[16:27:27] [chat:cmd] Peurost: /vehdel	

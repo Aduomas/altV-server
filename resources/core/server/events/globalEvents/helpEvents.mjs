@@ -11,6 +11,10 @@ alt.on('spawnPlayer', (player, x, y, z, timeout) => {
     player.spawn(x, y, z, timeout);
 });
 
+alt.onClient('spawnPlayer', (player, x, y, z, timeout) => {
+    player.spawn(x, y, z, timeout);
+});
+
 alt.on('giveWeapon', (player, arg) =>
 {
     if(perm.checkPermissions(player, 'admin'))

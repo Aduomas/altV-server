@@ -3,6 +3,10 @@ import chat from 'chat';
 import mysql from 'mysql';
 import { pool, registerUser, checkUserStatus, loginUser, bannedHandler } from '../mysql/mysql'
 
+const startPosition = {
+    x: 813, y: -279, z: 66
+};
+
 export function isCharacter(player, callback){
     pool.getConnection(function(err, connection) {
         if (err) throw err;
@@ -29,14 +33,24 @@ export function getUserCharacter(player){
                 player.setMeta('birthDate', results[0].birthdate);
                 player.setMeta('gender', results[0].gender);
                 player.setMeta('charID', results[0].id);
-                alt.emit('spawnPlayer', player, 813, -279, 66, 10);
                 if(results[0].gender == "Vyras"){
                     player.model = 'mp_m_freemode_01';
                 } else {
                     player.model = 'mp_f_freemode_01';
                 }
-                alt.emit('spawnPlayer', player, JSON.parse(results[0].pos).x, JSON.parse(results[0].pos).y, JSON.parse(results[0].pos).z);
-                //alt.emitClient(player, 'changeFace', (JSON.parse(results[0].face)));
+                try{
+                    alt.emit('spawnPlayer', player, JSON.parse(results[0].pos).x, JSON.parse(results[0].pos).y, JSON.parse(results[0].pos).z)
+                } catch(err){
+                    alt.emit('spawnPlayer', player, 813, -279, 66, 10);
+                };
+                try{
+                    alt.emitClient(player, 'changeFaceWeb', 1, JSON.parse(results[0].face).faceArgs);
+                    alt.emitClient(player, 'changeFaceWeb', 2, JSON.parse(results[0].face).facialArgs);
+                    alt.emitClient(player, 'changeFaceWeb', 4, JSON.parse(results[0].face).componentArgs);
+                    alt.emitClient(player, 'changeFaceWeb', 3, JSON.parse(results[0].face).hColorArgs);
+                } catch(err){
+                    //
+                }
                 alt.emitClient(player, 'loginCamera', true);
             }
         });
@@ -47,8 +61,14 @@ export function getUserCharacter(player){
 export function createUserCharacter(player, args){
     pool.getConnection(function(err, connection) {
         if (err) throw err;
-        connection.query(`INSERT INTO characters (firstname, lastname, birthdate, gender, owner) VALUES ("${args.firstname}", "${args.lastname}", "${args.birthdate}", "${args.gender}", "${player.name}")`, function (error, results, fields) {
+        connection.query(`INSERT INTO characters (firstname, lastname, birthdate, gender, owner, pos) VALUES ("${args.firstname}", "${args.lastname}", "${args.birthdate}", "${args.gender}", "${player.name}", "0")`, function (error, results, fields) {
             if(error) throw error;
+            if(args.gender == "Vyras"){
+                player.model = 'mp_m_freemode_01';
+            } else {
+                player.model = 'mp_f_freemode_01';
+            }
+            alt.emitClient(player, 'charCamera', false);
         });
         connection.release();
       });
@@ -64,8 +84,8 @@ export function saveUserCharacter(playerName, pos){
     });
 };
 
-export function saveCharacterFace(playerName, faceArgs){
-        pool.query(`UPDATE characters SET face = '${JSON.stringify(faceArgs)}' WHERE owner = ?`, playerName, function (error, results, fields) {
+export function saveCharacterFace(playerName, args){
+        pool.query(`UPDATE characters SET face = '${JSON.stringify(args)}' WHERE owner = ?`, playerName, function (error, results, fields) {
             if(error) throw error;
         });
 };
