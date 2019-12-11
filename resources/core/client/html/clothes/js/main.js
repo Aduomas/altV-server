@@ -146,6 +146,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function sendFaceData(){
     alt.emit('changeFaceWeb', 5, 0, faceArgs, facialArgs, componentArgs, hColorArgs);
+    alt.emit('charCamera', true);
 }
 
 function show()

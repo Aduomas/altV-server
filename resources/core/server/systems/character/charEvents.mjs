@@ -15,7 +15,7 @@ alt.onClient('createCharacterFromWeb', (player, args) => {
     createUserCharacter(player, args);
     alt.emitClient(player, 'createNewFaceCreationPage', false);
     console.log(`${player.name} created a character.`);
-    alt.emit('spawnPlayer', player, 813, -279, 66, 10);
     alt.emitClient(player, 'loginCamera', true);
     alt.emitClient(player, 'showAlertBox', "Veikėjas sėkmingai sukurtas", "green", 3000);
 });
+

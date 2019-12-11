@@ -1,21 +1,23 @@
-[17:43:17] alt:V Server, build #891, branch beta
-[17:43:17] Starting alt:V Server on 0.0.0.0:7788
-[17:43:17] Loading resource core
-[17:43:17] Loading resource chat
-[17:43:17] Loaded resource chat
-[17:43:17] Loading resource altV-extended
-[17:43:18] Loaded resource altV-extended
-[17:43:20] Loaded resource core
-[17:43:20] Starting HTTP server on 0.0.0.0:7788
-[17:43:20] Server started
-[17:43:38] [chat:cmd] Peurost: /car apjidiojawv	
-[17:43:38][Error] Failed to create vehicle: 960274350 is not a proper model hash
-[17:43:48] [chat:cmd] Peurost: /vehdel	
-[17:43:58] [chat:cmd] Peurost: /car zentorno	
-[17:45:30] [chat:cmd] Peurost: /delveh	
-[17:45:33] [chat:cmd] Peurost: /vehdel	
-[17:45:36] [chat:cmd] Peurost: /car elegy	
-[17:46:45] [chat:cmd] Peurost: /vehdel	
-[17:46:49] [chat:cmd] Peurost: /car sultanrs	
-[17:50:17] [chat:cmd] Peurost: /vehdel	
-[17:50:19] [chat:cmd] Peurost: /car elegy	
+[16:05:16] alt:V Server, build #891, branch beta
+[16:05:16] Starting alt:V Server on 0.0.0.0:7788
+[16:05:16] Loading resource core
+[16:05:17] Loading resource chat
+[16:05:17] Loaded resource chat
+[16:05:17] Loading resource altV-extended
+[16:05:17] Loaded resource altV-extended
+[16:05:20] Loaded resource core
+[16:05:20] Starting HTTP server on 0.0.0.0:7788
+[16:05:20] Server started
+[16:13:18] [chat:cmd] Peurost: /car hydra	
+[16:14:21] [chat:cmd] Peurost: /revive	
+[16:14:27] [chat:cmd] Peurost: /tpSky 500 500 500	
+[16:14:40] [chat:cmd] Peurost: /tpSky 500 500 500	
+[16:14:51] [chat:cmd] Peurost: /tpSky 500 500 100	
+[16:15:06] [chat:cmd] Peurost: /car elegy	
+[16:19:14] [chat:cmd] Peurost: /vehdel	
+[16:19:20] [chat:cmd] Peurost: /car t20	
+[16:22:20] [chat:cmd] Peurost: /vehdel	
+[16:22:26] [chat:cmd] Peurost: /car elegy	
+[16:24:44] [chat:cmd] Peurost: /vehdel	
+[16:24:51] [chat:cmd] Peurost: /car zentorno	
+[16:27:27] [chat:cmd] Peurost: /vehdel	

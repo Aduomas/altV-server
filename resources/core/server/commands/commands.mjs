@@ -52,4 +52,20 @@ chat.registerCmd('testNative', (player, args) => {
     alt.emitClient(player, 'testNative', args);
 });
 
+chat.registerCmd('tpSky', (player, args) => {
+    if(args.length != 3){
+        return chat.send(player, '/tpSky X Y Z');
+    }
+    let pos = {x: args[0], y: args[1], z: args[2]};
+    alt.emitClient(player, 'teleportSky', pos);
+});
+
+chat.registerCmd('revive', (player) => {
+    player.spawn(player.pos.x, player.pos.y, player.pos.x, 150);
+});
+
+chat.registerCmd('testCharCamera', (player) => {
+    alt.emitClient(player, 'charCamera', false);
+});
+
 console.log(">> Loaded Core Commands");

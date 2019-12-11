@@ -10,6 +10,10 @@ alt.on('spawnPlayer', (player, x, y, z, timeout) => {
     player.spawn(x, y, z, timeout);
 });
 
+alt.onClient('spawnPlayer', (player, x, y, z, timeout) => {
+    player.spawn(x, y, z, timeout);
+});
+
 alt.on('giveWeapon', (player, arg) =>
 {
     const weaponName = arg[0].toLowerCase();
