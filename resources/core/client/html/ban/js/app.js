@@ -32,6 +32,9 @@ function hide()
 if('alt' in window){
     alt.on('show', show);
     alt.on('hide', hide);
+    alt.on('loadDetails', (name, reason, type, length) => {
+        loadDetails(name, reason, type, length);
+    });
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -39,3 +42,4 @@ window.addEventListener('DOMContentLoaded', () => {
         alt.emit('WebPageLoaded');
     }
 });
+

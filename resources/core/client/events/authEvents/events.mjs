@@ -1,7 +1,7 @@
 import * as alt from 'alt';
 import * as native from 'natives';
 import chat from 'chat';
-import * as extended from 'altV-extended'
+import * as extended from 'altV-extended';
 
 alt.onServer('loginCamera', (args) => {
     let camID = null;
@@ -29,6 +29,7 @@ alt.onServer('loginCamera', (args) => {
 const registerPage = new alt.WebView("http:/resource/client/html/login/register.html");
 const loginPage = new alt.WebView("http:/resource/client/html/login/login.html");
 const bannedPage = new alt.WebView("http:/resource/client/html/ban/index.html");
+
 
 alt.onServer('loginPageLoad', (args) => {
     loginPage.focus();
@@ -62,7 +63,7 @@ registerPage.on('registerPlayerWeb', (arg) =>{
     alt.emitServer('registerPlayerFromWeb', arg);
 });
 
-alt.onServer('bannedPageLoad', (args) => {
+alt.onServer('bannedPageLoad', (args, name, reason, type, length) => {
     bannedPage.emit('show');
     bannedPage.focus();
     loginPage.destroy();
@@ -75,6 +76,8 @@ alt.onServer('bannedPageLoad', (args) => {
         loginPage.destroy();
         registerPage.destroy();
     }
+
+    bannedPage.emit('loadDetails', name, reason, type, length); 
 });
 
 bannedPage.on('kickPlayerWeb',() => {

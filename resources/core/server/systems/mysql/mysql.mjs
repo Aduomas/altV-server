@@ -16,7 +16,7 @@ var logindetails = {
 export function registerUser(username, password){ //Naudojama užregistruoti vartotoją. username = player.name. Password = input.
     pool.getConnection(function(err, connection) {
     if (err) throw err;
-    connection.query(`INSERT INTO accounts (USER, PASSWORD, PERMISSIONLEVEL) VALUES ('${username}', '${encrypt.encryptPassword(password)}', 'USER')`, function (error, results, fields) {
+    connection.query(`INSERT INTO accounts (USER, PASSWORD, PERMISSIONS) VALUES ('${username}', '${encrypt.encryptPassword(password)}', 'USER')`, function (error, results, fields) {
       if (error) throw error;
     });
     connection.release();
@@ -84,12 +84,36 @@ export function banUser(player, callback) {
     connection.query(`UPDATE accounts SET BANNED = "TRUE" WHERE USER = ?`, player.name ,function (error, results, fields) {
       if(error) throw error;
     });
-    connection.query(`INSERT into bans (USER, REASON) VALUES ('${player.name}', '${player.banReason}')`,function (error, results, fields) {
+    connection.query(`INSERT into bans (USER, REASON, LENGTH, TYPE, IP, HWID) VALUES ('${player.name}', '${player.banReason}', '${player.banLength}', '${player.banType}', '${player.ip}', '${player.hwidHash}')`,function (error, results, fields) {
       if(error) throw error;
     });
     connection.release();
   });
 
+}
+
+export function checkBanInfo(player, callback)
+{
+  pool.getConnection(function(err, connection) {
+    if(err) throw error;
+    connection.query(`SELECT USER, TYPE, REASON, LENGTH, IP, HWID FROM bans WHERE USER = ?`, player.name, function (error, results, fields) {
+      if(error) throw error;
+        return callback(results[0].REASON, results[0].TYPE, results[0].LENGTH, results[0].IP, results[0].HWID);
+    });
+    connection.release();
+  });
+}
+
+export function getUserPermissions(player, callback)
+{
+  pool.getConnection(function(err, connection) {
+    if(err) throw error;
+    connection.query(`SELECT permissions from accounts WHERE USER = ?`, player.name, function (error, results, fields) {
+      if(error) throw error;
+        return callback(results[0].permissions);
+    });
+    connection.release();
+  });
 }
 
 

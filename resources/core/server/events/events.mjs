@@ -8,6 +8,7 @@ import * as extended from 'altV-extended'
 
 console.log(">> Loading Core Events");
 
+import * as commands from '../commands/commands.mjs';
 import * as playerConnectEvent from './globalEvents/playerConnect.mjs'
 import * as playerDisconnectEvent from './globalEvents/playerDisconnect.mjs'
 import * as helpEvents from './globalEvents/helpEvents.mjs'

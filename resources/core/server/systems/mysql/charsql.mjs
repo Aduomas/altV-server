@@ -36,7 +36,7 @@ export function getUserCharacter(player){
                     player.model = 'mp_f_freemode_01';
                 }
                 alt.emit('spawnPlayer', player, JSON.parse(results[0].pos).x, JSON.parse(results[0].pos).y, JSON.parse(results[0].pos).z);
-                alt.emitClient(player, 'changeFace', (JSON.parse(results[0].face)));
+                //alt.emitClient(player, 'changeFace', (JSON.parse(results[0].face)));
                 alt.emitClient(player, 'loginCamera', true);
             }
         });
