@@ -59,25 +59,6 @@ export function checkUserStatus(player, callback){ //Naudojama ar žaidėjas reg
       });
 }
 
-export function bannedHandler(player, callback){
-  pool.getConnection(function(err, connection) {
-    if(err) throw error;
-    connection.query(`SELECT USER FROM bans WHERE USER = ?`, player.name ,function (error, results, fields) {
-      if(error) throw error;
-        if(results.length){
-          if(results[0].type === 'IP'){
-            return callback('IP', results[0].reason, results[0].length);
-          } else if (results[0].type === 'HWID'){
-            return callback('HWID', results[0].reason, results[0].length);
-          } else if (results[0].type === 'ACCOUNT'){
-            return callback('ACCOUNT', results[0].reason, results[0].length);
-          }
-        }
-    });
-    connection.release();
-  });
-}
-
 export function banUser(player, callback) {
   pool.getConnection(function(err, connection) {
     if(err) throw error;

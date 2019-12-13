@@ -2,7 +2,7 @@ import * as alt from "alt";
 import { weaponList } from '../../systems/utility/weapons.mjs';
 import chat from 'chat';
 import * as auth from '../../systems/auth/auth.mjs'
-import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser } from '../../systems/mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser, banUser } from '../../systems/mysql/mysql'
 import { isCharacter, getUserCharacter, createUserCharacter, saveUserCharacter, saveCharacterFace } from '../../systems/mysql/charsql'
 import * as extended from 'altV-extended'
 import * as perm from '../../systems/utility/permissions.mjs';

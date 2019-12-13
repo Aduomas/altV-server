@@ -12,7 +12,7 @@ alt.onServer('loginCamera', (args) => {
     native.pointCamAtCoord(camID, 392.4527587890625, -558.4747314453125, 69.006591796875); // <-- native.getGameplayCamCoords()
     native.renderScriptCams(true, false, 0, true, false);
     native.displayRadar(false);
-    native.transitionToBlurred(10);
+    native.triggerScreenblurFadeIn(10);
     alt.emit('hidechat', true);
     native.disableControlAction(0, 199, true);
     if(args){
@@ -20,7 +20,7 @@ alt.onServer('loginCamera', (args) => {
         native.disableControlAction(0, 199, false);
         native.destroyCam(camID, false);
         native.displayRadar(true);
-        native.transitionFromBlurred(100);
+        native.triggerScreenblurFadeOut(100);
         alt.emit('hidechat', false);
     }
 });
