@@ -1,6 +1,8 @@
+import * as alt from 'alt';
+
 export function checkPermissions(player, perm)
 {
-    if(player.perm == perm)
+    if(player.perm.toLowerCase() == perm.toLowerCase())
         return true;
     else
     {

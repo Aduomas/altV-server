@@ -116,6 +116,16 @@ export function getUserPermissions(player, callback)
   });
 }
 
+export function unbanUser(player, callback)
+{
+  pool.getConnection(function(err, connection) {
+    if(err) throw error;
+    connection.query(`DELETE from bans WHERE USER = ?`, player.name, function(error, results, fields) {
+      if(error) throw error;
+    });
+  })
+}
+
 
 export var pool = mysql.createPool(logindetails);
 
