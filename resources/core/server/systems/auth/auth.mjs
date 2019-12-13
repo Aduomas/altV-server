@@ -1,7 +1,7 @@
 import * as alt from "alt";
 import chat from 'chat';
 import mysql from 'mysql';
-import { pool, registerUser, checkUserStatus, loginUser, bannedHandler } from '../mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser } from '../mysql/mysql'
 import { isCharacter, getUserCharacter, createUserCharacter } from '../mysql/charsql'
 
 console.log(">> Loading Core Auth");

@@ -41,6 +41,18 @@ export function loginUser(player, password, callback){ //Naudojama prisijungimui
   });
 }
 
+export function getUserPermissions(player, callback)
+{
+  pool.getConnection(function(err, connection) {
+    if(err) throw error;
+    connection.query(`SELECT permissions from accounts WHERE USER = ?`, player.name, function (error, results, fields) {
+      if(error) throw error;
+        return callback(results[0].permissions);
+    });
+    connection.release();
+  });
+}
+
 export function checkUserStatus(player, callback){ //Naudojama ar žaidėjas registruotas tikrinimui. Username = player.name., Callback = Funkcija
     pool.getConnection(function(err, connection) {
       if(err) throw error;
@@ -59,20 +71,13 @@ export function checkUserStatus(player, callback){ //Naudojama ar žaidėjas reg
       });
 }
 
-export function bannedHandler(player, callback){
+export function checkBanInfo(player, callback)
+{
   pool.getConnection(function(err, connection) {
     if(err) throw error;
-    connection.query(`SELECT USER FROM bans WHERE USER = ?`, player.name ,function (error, results, fields) {
+    connection.query(`SELECT USER, TYPE, REASON, LENGTH, IP, HWID FROM bans WHERE USER = ?`, player.name, function (error, results, fields) {
       if(error) throw error;
-        if(results.length){
-          if(results[0].type === 'IP'){
-            return callback('IP', results[0].reason, results[0].length);
-          } else if (results[0].type === 'HWID'){
-            return callback('HWID', results[0].reason, results[0].length);
-          } else if (results[0].type === 'ACCOUNT'){
-            return callback('ACCOUNT', results[0].reason, results[0].length);
-          }
-        }
+        return callback(results[0].REASON, results[0].TYPE, results[0].LENGTH, results[0].IP, results[0].HWID);
     });
     connection.release();
   });
@@ -92,30 +97,6 @@ export function banUser(player, callback) {
 
 }
 
-export function checkBanInfo(player, callback)
-{
-  pool.getConnection(function(err, connection) {
-    if(err) throw error;
-    connection.query(`SELECT USER, TYPE, REASON, LENGTH, IP, HWID FROM bans WHERE USER = ?`, player.name, function (error, results, fields) {
-      if(error) throw error;
-        return callback(results[0].REASON, results[0].TYPE, results[0].LENGTH, results[0].IP, results[0].HWID);
-    });
-    connection.release();
-  });
-}
-
-export function getUserPermissions(player, callback)
-{
-  pool.getConnection(function(err, connection) {
-    if(err) throw error;
-    connection.query(`SELECT permissions from accounts WHERE USER = ?`, player.name, function (error, results, fields) {
-      if(error) throw error;
-        return callback(results[0].permissions);
-    });
-    connection.release();
-  });
-}
-
 export function unbanUser(player, callback)
 {
   pool.getConnection(function(err, connection) {
@@ -125,7 +106,6 @@ export function unbanUser(player, callback)
     });
   })
 }
-
 
 export var pool = mysql.createPool(logindetails);
 
