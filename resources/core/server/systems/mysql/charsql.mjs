@@ -31,9 +31,10 @@ export function getUserCharacter(player){
                 player.firstName = results[0].firstname;
                 player.lastName = results[0].lastname;
                 player.birthDate = results[0].birthdate;
-                player.gender = results[0].gender;
+                player.gender =  results[0].gender;
                 player.charID = results[0].id;
                 player.bank = results[0].bank;
+                alt.emit('spawnPlayer', player, 813, -279, 66, 10);
                 if(results[0].gender == "Vyras"){
                     player.model = 'mp_m_freemode_01';
                 } else {
