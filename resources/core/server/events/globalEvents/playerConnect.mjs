@@ -1,5 +1,5 @@
 import * as alt from "alt";
-import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser, checkBanStatus, getUserPermissions } from '../../systems/mysql/mysql'
+import { pool, registerUser, checkUserStatus, loginUser, bannedHandler, banUser, checkBanInfo, getUserPermissions } from '../../systems/mysql/mysql'
 import * as date from '../../systems/utility/date.mjs';
 
 alt.on('playerConnect', (player) => {
@@ -20,6 +20,8 @@ alt.on('playerConnect', (player) => {
             alt.emitClient(player, 'registerPageLoad', true);
         } else if (result === 'banned') {
             checkBanInfo(player, (reason, type, length, ip, hwid) => {
+                if(length < Date().now)
+                    unbanUser(player);
                 if(player.ip == ip && player.hwidHash == hwid)
                     alt.emitClient(player, 'bannedPageLoad', true, player.name, reason, type, date.leftTime(length));
                 else alt.emitClient(player, 'showAlertBox', `Prisijungei su kitu kompiuteriu arba IP adresu!`, 'red', 5000);

@@ -12,9 +12,7 @@ alt.on('spawnPlayer', (player, x, y, z, timeout) => {
 });
 
 alt.on('giveWeapon', (player, arg) =>
-{
-    if(perm.checkPermissions(player, 'admin'))
-    {
+{ 
     const weaponName = arg[0].toLowerCase();
     
     let ammo = 0;
@@ -27,21 +25,18 @@ alt.on('giveWeapon', (player, arg) =>
 
     player.giveWeapon(weaponList[weaponName], ammo, true);
     alt.emitClient(player, 'showAlertBox', `Gavai ${weaponName[0].toUpperCase() + weaponName.slice(1)}`, 'blue', 3000);
-    }
+    
 });
 
 alt.on('clearWeapons', player =>
 {
-    if(perm.checkPermissions(player, 'admin'))
-    {
     player.removeAllWeapons();
     alt.emitClient(player, 'showAlertBox', `Iš tavęs buvo atimti visi ginklai`, 'red', 3000);
-    }
+    
 });
 
 alt.on('kick', (player, arg) =>
 {
-    if(perm.checkPermissions(player, 'admin'))
     alt.Player.all.forEach(player =>
         {
             if(player.name == arg[0])
@@ -57,7 +52,6 @@ alt.on('kick', (player, arg) =>
 
 alt.on('ban', (player, arg) => // /ban Name Reason Time Type
 {
-    if(perm.checkPermissions(player, 'admin'))
     alt.Player.all.forEach(player =>
         {
             if(arg[0] !== undefined) 
